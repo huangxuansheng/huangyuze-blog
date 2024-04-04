@@ -68,44 +68,44 @@ export default defineUserConfig({
         "14.url.md",
         "15.JSyunxing.md",
       ],
+      //aboutMe
+      "/views/aboutMe/": [""],
     },
     navbar: [
-      { text: "Home", link: "/" },
-      {
-        text: "Vue",
+      { text: "首页", link: "/" },
+      { text: "优质项目", link: "/" },
+      { text: "若依", link: "/" },
+      { 
+        text: "前端", 
         children: [
-          { text: "vue2基础", link: "/views/Vue/vue2-easy/" }, // 可不写后缀 .md
-          { text: "vue2进阶", link: "/views/Vue/vue2-mid/" },
-          { text: "vue-cli", link: "/views/Vue/vue-cli/" },
-          { text: "vue-理解", link: "/views/Vue/vue-hard/" },
-          { text: "vuex", link: "/views/Vue/vuex/" },
-          { text: "vue-router", link: "/views/Vue/vue-router/" },
+          { text: "Html", link: "/", ariaLabel: "前端" },
+          { text: "Css", link: "/", ariaLabel: "前端" },
+          { text: "JavaScript、Es6", link: "/", ariaLabel: "前端" },
+          { text: "TypeScript", link: "/views/other/typescript/", ariaLabel: "前端" },
+          { 
+            text: "vue2、Vue3",
+            children: [
+              { text: "vue2基础", link: "/views/Vue/vue2-easy/" }, // 可不写后缀 .md
+              { text: "vue2进阶", link: "/views/Vue/vue2-mid/" },
+              { text: "vue-cli", link: "/views/Vue/vue-cli/" },
+              { text: "vue-理解", link: "/views/Vue/vue-hard/" },
+              { text: "vuex", link: "/views/Vue/vuex/" },
+              { text: "vue-router", link: "/views/Vue/vue-router/" },
+            ],  
+            ariaLabel: "前端" },
+          { text: "React", link: "/views/React/", ariaLabel: "前端" },
+          { text: "Http、浏览器", link: "/", ariaLabel: "前端" },
+          { text: "web安全", link: "/views/other/web-safe/", ariaLabel: "前端" },
+          { text: "性能优化", link: "/views/other/performance/", ariaLabel: "前端" },
+          { text: "微前端", link: "/views/other/micro-web/", ariaLabel: "前端" },
         ],
       },
-      {
-        text: "分类",
+      { text: "后端", link: "/" },
+      { text: "开发工具", link: "/" },
+      { text: "服务器部署", link: "/" },
+      { 
+        text: "学习资料", 
         children: [
-          { text: "git", link: "/views/other/Git/", ariaLabel: "分类" },
-          {
-            text: "性能优化",
-            link: "/views/other/performance/",
-            ariaLabel: "分类",
-          },
-          {
-            text: "web安全",
-            link: "/views/other/web-safe/",
-            ariaLabel: "分类",
-          },
-          {
-            text: "typescript",
-            link: "/views/other/typescript/",
-            ariaLabel: "分类",
-          },
-          {
-            text: "微前端",
-            link: "/views/other/micro-web/",
-            ariaLabel: "分类",
-          },
           {
             text: "面试题",
             link: "/views/other/questions/",
@@ -120,7 +120,11 @@ export default defineUserConfig({
             text: "我的CSDN",
             link: "https://blog.csdn.net/weixin_46820017?type=blog",
           },
-        ],
+        ] 
+      },
+      {
+        text: "关于我",
+        link: "/views/aboutMe/",
       },
     ],
     // bulletin: {
