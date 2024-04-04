@@ -38,19 +38,19 @@ export default defineUserConfig({
     series: {
       //vue 开始
       // 原理
-      "/views/Vue/vue-hard/": [""],
-      "/views/Vue/vuex/": [""],
-      "/views/Vue/vue-router/": ["readme.md"],
-      "/views/Vue/vue2-easy/": [""],
-      "/views/Vue/vue2-mid/": [""],
-      "/views/Vue/vue-cli/": [""],
+      "/docs/Vue/vue-hard/": [""],
+      "/docs/Vue/vuex/": [""],
+      "/docs/Vue/vue-router/": ["readme.md"],
+      "/docs/Vue/vue2-easy/": [""],
+      "/docs/Vue/vue2-mid/": [""],
+      "/docs/Vue/vue-cli/": [""],
       //vue 结束
       // react
-      "/views/React/": [""],
+      "/docs/React/": [""],
       //微前端
-      "/views/other/micro-web/": [""],
-      "/views/other/questions/": [""],
-      "/views/other/questions2/": [
+      "/docs/other/micro-web/": [""],
+      "/docs/other/questions/": [""],
+      "/docs/other/questions2/": [
         // "readme.md",
         "1.HTML.md",
         "2.CSS.md",
@@ -69,7 +69,7 @@ export default defineUserConfig({
         "15.JSyunxing.md",
       ],
       //aboutMe
-      "/views/aboutMe/": [""],
+      "/docs/aboutMe/": [""],
     },
     navbar: [
       { text: "首页", link: "/" },
@@ -81,23 +81,23 @@ export default defineUserConfig({
           { text: "Html", link: "/", ariaLabel: "前端" },
           { text: "Css", link: "/", ariaLabel: "前端" },
           { text: "JavaScript、Es6", link: "/", ariaLabel: "前端" },
-          { text: "TypeScript", link: "/views/other/typescript/", ariaLabel: "前端" },
+          { text: "TypeScript", link: "/docs/other/typescript/", ariaLabel: "前端" },
           { 
             text: "vue2、Vue3",
             children: [
-              { text: "vue2基础", link: "/views/Vue/vue2-easy/" }, // 可不写后缀 .md
-              { text: "vue2进阶", link: "/views/Vue/vue2-mid/" },
-              { text: "vue-cli", link: "/views/Vue/vue-cli/" },
-              { text: "vue-理解", link: "/views/Vue/vue-hard/" },
-              { text: "vuex", link: "/views/Vue/vuex/" },
-              { text: "vue-router", link: "/views/Vue/vue-router/" },
+              { text: "vue2基础", link: "/docs/Vue/vue2-easy/" }, // 可不写后缀 .md
+              { text: "vue2进阶", link: "/docs/Vue/vue2-mid/" },
+              { text: "vue-cli", link: "/docs/Vue/vue-cli/" },
+              { text: "vue-理解", link: "/docs/Vue/vue-hard/" },
+              { text: "vuex", link: "/docs/Vue/vuex/" },
+              { text: "vue-router", link: "/docs/Vue/vue-router/" },
             ],  
             ariaLabel: "前端" },
-          { text: "React", link: "/views/React/", ariaLabel: "前端" },
+          { text: "React", link: "/docs/React/", ariaLabel: "前端" },
           { text: "Http、浏览器", link: "/", ariaLabel: "前端" },
-          { text: "web安全", link: "/views/other/web-safe/", ariaLabel: "前端" },
-          { text: "性能优化", link: "/views/other/performance/", ariaLabel: "前端" },
-          { text: "微前端", link: "/views/other/micro-web/", ariaLabel: "前端" },
+          { text: "web安全", link: "/docs/other/web-safe/", ariaLabel: "前端" },
+          { text: "性能优化", link: "/docs/other/performance/", ariaLabel: "前端" },
+          { text: "微前端", link: "/docs/other/micro-web/", ariaLabel: "前端" },
         ],
       },
       { text: "后端", link: "/" },
@@ -108,12 +108,12 @@ export default defineUserConfig({
         children: [
           {
             text: "面试题",
-            link: "/views/other/questions/",
+            link: "/docs/other/questions/",
             ariaLabel: "分类",
           },
           {
             text: "网络面试题",
-            link: "/views/other/questions2/",
+            link: "/docs/other/questions2/",
             ariaLabel: "分类",
           },
           {
@@ -124,7 +124,7 @@ export default defineUserConfig({
       },
       {
         text: "关于我",
-        link: "/views/aboutMe/",
+        link: "/docs/aboutMe/",
       },
     ],
     // bulletin: {
