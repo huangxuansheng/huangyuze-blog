@@ -206,7 +206,17 @@ export default defineUserConfig({
         "git常见指令集.md",
         "A_Git详细学习笔记.md",
       ],
-
+      //浏览器
+      "/docs/browser/": [
+        "1.md",
+        "2.md",
+        "3.md",
+        "4.md",
+        "5.md",
+        "6.md",
+        "7.md",
+        "8.md",
+      ],
       //微信小程序
       "/docs/applet/": [
         "applet.md",
@@ -218,8 +228,32 @@ export default defineUserConfig({
         "requestPayment.md",
         "WebView_jscore.md",
       ],
+      //算法
+      "/docs/algorithm/": [
+        "Algorithm.md",
+        "BinarySearch.md",
+        "bubbleSort.md",
+        "design1.md",
+        "design2.md",
+        "graph.md",
+        "Heap.md",
+        "insertionSort.md",
+        "Linked List.md",
+        "mergeSort.md",
+        "quickSort.md",
+        "selectionSort.md",
+        "set.md",
+        "sort.md",
+        "stack_queue.md",
+        "structure.md",
+        "time_space.md",
+        "tree.md",
+      ],
       //微前端
-      "/docs/other/micro-web/": [""],
+      "/docs/other/micro-web/": [
+        "qiankun.md",
+        "microapp.md",
+      ],
       "/docs/other/questions/": [""],
       "/docs/other/questions2/": [
         // "readme.md",
@@ -238,6 +272,41 @@ export default defineUserConfig({
         "13.log.md",
         "14.url.md",
         "15.JSyunxing.md",
+      ],
+      //node
+      "/docs/server/Nodejs": [
+        "A_Node笔记总纲.md",
+        "Buffer.md",
+        "event_loop.md",
+        "EventEmitter.md",
+        "file_upload.md",
+        "fs copy.md",
+        "fs.md",
+        "global.md",
+        "jwt.md",
+        "middleware.md",
+        "nodejs.md",
+        "paging.md",
+        "performance.md",
+        "process.md",
+        "require_order.md",
+        "Stream.md",
+      ],
+      //java
+      "/docs/server/Java/": [
+        "",
+      ],
+      //golang
+      "/docs/server/Golang/": [
+        "",
+      ],
+      //mysql
+      "/docs/server/Mysql数据库": [
+        "",
+      ],
+      //云服务器
+      "/docs/server/云服务器相关笔记": [
+        "",
       ],
       //aboutMe
       "/docs/aboutMe/": [""],
@@ -258,16 +327,28 @@ export default defineUserConfig({
           { text: "vue2",link: "/docs/Vue/", ariaLabel: "前端"  },
           { text: "vue3",link: "/docs/Vue3/", ariaLabel: "前端"  },
           { text: "React", link: "/docs/React/", ariaLabel: "前端" },
+          { text: "Webpack", link: "/docs/Webpack/", ariaLabel: "前端" },
           { text: "Git", link: "/docs/Git/", ariaLabel: "前端" },
           { text: "Http", link: "/docs/http/", ariaLabel: "前端" },
           { text: "浏览器", link: "/docs/browser/", ariaLabel: "前端" },
-          { text: "微信小程序", link: "/docs/applet/", ariaLabel: "前端" },
+          { text: "小程序", link: "/docs/applet/", ariaLabel: "前端" },
           { text: "web安全", link: "/docs/other/web-safe/", ariaLabel: "前端" },
           { text: "性能优化", link: "/docs/other/performance/", ariaLabel: "前端" },
           { text: "微前端", link: "/docs/other/micro-web/", ariaLabel: "前端" },
+          { text: "算法", link: "/docs/algorithm/", ariaLabel: "前端" },
         ],
       },
-      { text: "后端", link: "/",icon: 'ServerProxy' },
+      { 
+        text: "后端",
+        icon: 'ServerProxy',
+        children:[
+          { text: "node", link: "/docs/server/Nodejs/", ariaLabel: "后端" },
+          { text: "java", link: "/docs/server/Java/", ariaLabel: "后端" },
+          { text: "golang", link: "/docs/server/Golang/", ariaLabel: "后端" },
+          { text: "mysql", link: "/docs/server/Mysql数据库/", ariaLabel: "后端" },
+          { text: "yunServer", link: "/docs/server/云服务器相关笔记/", ariaLabel: "后端" },
+        ]
+      },
       { text: "开发工具", link: "/",icon: 'Tools' },
       { text: "服务器部署", link: "/",icon: 'ServerDns' },
       { 
