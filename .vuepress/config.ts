@@ -204,7 +204,6 @@ export default defineUserConfig({
         "HEAD_tree_index.md",
         "Version control.md",
         "git常见指令集.md",
-        "A_Git详细学习笔记.md",
       ],
       //浏览器
       "/docs/browser/": [
