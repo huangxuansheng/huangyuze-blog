@@ -304,7 +304,7 @@ export default defineUserConfig({
         "",
       ],
       //云服务器
-      "/docs/server/云服务器相关笔记": [
+      "/docs/server/云服务器": [
         "",
       ],
       //aboutMe
@@ -345,7 +345,7 @@ export default defineUserConfig({
           { text: "java", link: "/docs/server/Java/", ariaLabel: "后端" },
           { text: "golang", link: "/docs/server/Golang/", ariaLabel: "后端" },
           { text: "mysql", link: "/docs/server/Mysql数据库/", ariaLabel: "后端" },
-          { text: "yunServer", link: "/docs/server/云服务器相关笔记/", ariaLabel: "后端" },
+          { text: "yunServer", link: "/docs/server/云服务器/", ariaLabel: "后端" },
         ]
       },
       { text: "开发工具", link: "/",icon: 'Tools' },
