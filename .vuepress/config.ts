@@ -42,8 +42,12 @@ export default defineUserConfig({
     series: {
       sidebarDepth: 1,
       series: "auto",
+      //dart
+      "/docs/flutter/dart/": [
+        "dart.md",
+      ],
       //css
-      "/docs/css/": [
+      "/docs/interView/css/": [
         "BFC.md",
         "box.md",
         "center.md",
@@ -66,7 +70,7 @@ export default defineUserConfig({
         "visual_scrolling.md",
       ],
       //javaScript
-      "/docs/JavaScript/": [
+      "/docs/interView/JavaScript/": [
         "== _===.md",
         "ajax.md",
         "array_api.md",
@@ -105,7 +109,7 @@ export default defineUserConfig({
         "visible.md",
       ],
       //Es6
-      "/docs/es6/": [
+      "/docs/interView/es6/": [
         "array.md",
         "decorator.md",
         "function.md",
@@ -119,7 +123,7 @@ export default defineUserConfig({
       ],
 
       //Typescript
-      "/docs/typescript/": [
+      "/docs/interView/typescript/": [
         "class.md",
         "data_type.md",
         "decorator.md",
@@ -134,7 +138,7 @@ export default defineUserConfig({
         "vue.md",
       ],
       //vue 
-      "/docs/Vue/": [
+      "/docs/interView/Vue/": [
         "vue-cli.md",
         "vue-hard.md",
         "vue-router.md",
@@ -143,7 +147,7 @@ export default defineUserConfig({
         "vuex.md",
       ],
       //vue3
-      "/docs/Vue3/": [
+      "/docs/interView/Vue3/": [
         "composition.md",
         "goal.md",
         "modal_component.md",
@@ -151,7 +155,7 @@ export default defineUserConfig({
         "treeshaking.md",
       ],
       // react
-      "/docs/React/": [
+      "/docs/interView/React/": [
         "animation.md",
         "Binding events.md",
         "Building components.md",
@@ -176,7 +180,7 @@ export default defineUserConfig({
         "React.md",
       ],
       //http
-      "/docs/http/": [
+      "/docs/interView/http/": [
         "1.0_1.1_2.0.md", 
         "after_url.md", 
         "CDN.md", 
@@ -193,7 +197,7 @@ export default defineUserConfig({
         "WebSocket.md", 
       ],
       //Git
-      "/docs/Git/": [
+      "/docs/interView/Git/": [
         "command.md",
         "conflict.md",
         "fork_clone_branch.md",
@@ -207,7 +211,7 @@ export default defineUserConfig({
         "git常见指令集.md",
       ],
       //浏览器
-      "/docs/browser/": [
+      "/docs/interView/browser/": [
         "1.md",
         "2.md",
         "3.md",
@@ -218,7 +222,7 @@ export default defineUserConfig({
         "8.md",
       ],
       //微信小程序
-      "/docs/applet/": [
+      "/docs/interView/applet/": [
         "applet.md",
         "lifecycle.md",
         "login.md",
@@ -229,7 +233,7 @@ export default defineUserConfig({
         "WebView_jscore.md",
       ],
       //算法
-      "/docs/algorithm/": [
+      "/docs/interView/algorithm/": [
         "Algorithm.md",
         "BinarySearch.md",
         "bubbleSort.md",
@@ -250,12 +254,12 @@ export default defineUserConfig({
         "tree.md",
       ],
       //微前端
-      "/docs/other/micro-web/": [
+      "/docs/interView/other/micro-web/": [
         "qiankun.md",
         "microapp.md",
       ],
-      "/docs/other/questions/": [""],
-      "/docs/other/questions2/": [
+      "/docs/interView/other/questions/": [""],
+      "/docs/interView/other/questions2/": [
         // "readme.md",
         "1.HTML.md",
         "2.CSS.md",
@@ -368,34 +372,18 @@ export default defineUserConfig({
           
         ]
       },
-      { text: "移动端", icon: 'ApplicationWeb',
+      { text: "移动端", icon: 'ApplicationAndroid',
         children: [
-          { text: "dart", link: "/docs/dart/", ariaLabel: "移动端" },
-          { text: "flutter", link: "/docs/flutter/", ariaLabel: "移动端" },
-          { text: "kotlin", link: "/docs/kotlin/", ariaLabel: "移动端" },
+          { text: "dart", link: "/docs/flutter/dart/", ariaLabel: "移动端" },
+          { text: "flutter", link: "/docs/flutter/flutter/", ariaLabel: "移动端" },
+          { text: "kotlin", link: "/docs/android/kotlin/", ariaLabel: "移动端" },
         ]
       },
       { 
         text: "前端", 
         icon: 'ApplicationWeb',
         children: [
-          { text: "Html", link: "/docs/html/", ariaLabel: "前端" },
-          { text: "Css", link: "/docs/css/", ariaLabel: "前端" },
-          { text: "JavaScript", link: "/docs/JavaScript/", ariaLabel: "前端" },
-          { text: "Es6", link: "/docs/es6/", ariaLabel: "前端" },
-          { text: "TypeScript", link: "/docs/typescript/", ariaLabel: "前端" },
-          { text: "vue2",link: "/docs/Vue/", ariaLabel: "前端"  },
-          { text: "vue3",link: "/docs/Vue3/", ariaLabel: "前端"  },
-          { text: "React", link: "/docs/React/", ariaLabel: "前端" },
-          { text: "Webpack", link: "/docs/Webpack/", ariaLabel: "前端" },
-          { text: "Git", link: "/docs/Git/", ariaLabel: "前端" },
-          { text: "Http", link: "/docs/http/", ariaLabel: "前端" },
-          { text: "浏览器", link: "/docs/browser/", ariaLabel: "前端" },
-          { text: "小程序", link: "/docs/applet/", ariaLabel: "前端" },
-          { text: "web安全", link: "/docs/other/web-safe/", ariaLabel: "前端" },
-          { text: "性能优化", link: "/docs/other/performance/", ariaLabel: "前端" },
-          { text: "微前端", link: "/docs/other/micro-web/", ariaLabel: "前端" },
-          { text: "算法", link: "/docs/algorithm/", ariaLabel: "前端" },
+          // { text: "Html", link: "/docs/html/", ariaLabel: "前端" },
         ],
       },
       { 
@@ -409,19 +397,30 @@ export default defineUserConfig({
           { text: "yunServer", link: "/docs/server/云服务器/", ariaLabel: "后端" },
         ]
       },
-      { text: "服务器部署", link: "/",icon: 'ServerDns' },
+      // { text: "服务器部署", link: "/",icon: 'ServerDns' },
       { 
-        text: "学习资料",
+        text: "前端面试资料",
         icon: 'Document',
         children: [
-          {
-            text: "面试题",
-            link: "/docs/other/questions/",
-          },
-          {
-            text: "网络面试题",
-            link: "/docs/other/questions2/",
-          },
+          { text: "Html", link: "/docs/interView/html/", ariaLabel: "前端" },
+          { text: "Css", link: "/docs/interView/css/", ariaLabel: "前端" },
+          { text: "JavaScript", link: "/docs/interView/JavaScript/", ariaLabel: "前端" },
+          { text: "Es6", link: "/docs/interView/es6/", ariaLabel: "前端" },
+          { text: "TypeScript", link: "/docs/interView/typescript/", ariaLabel: "前端" },
+          { text: "vue2",link: "/docs/interView/Vue/", ariaLabel: "前端"  },
+          { text: "vue3",link: "/docs/interView/Vue3/", ariaLabel: "前端"  },
+          { text: "React", link: "/docs/interView/React/", ariaLabel: "前端" },
+          { text: "Webpack", link: "/docs/interView/Webpack/", ariaLabel: "前端" },
+          { text: "Git", link: "/docs/interView/Git/", ariaLabel: "前端" },
+          { text: "Http", link: "/docs/interView/http/", ariaLabel: "前端" },
+          { text: "浏览器", link: "/docs/interView/browser/", ariaLabel: "前端" },
+          { text: "小程序", link: "/docs/interView/applet/", ariaLabel: "前端" },
+          { text: "web安全", link: "/docs/interView/other/web-safe/", ariaLabel: "前端" },
+          { text: "性能优化", link: "/docs/interView/other/performance/", ariaLabel: "前端" },
+          { text: "微前端", link: "/docs/interView/other/micro-web/", ariaLabel: "前端" },
+          { text: "算法", link: "/docs/interView/algorithm/", ariaLabel: "前端" }, 
+          { text: "面试题", link: "/docs/interView/other/questions/", },
+          { text: "计算机网络面试题", link: "/docs/interView/other/questions2/"},
         ] 
       },
       {
