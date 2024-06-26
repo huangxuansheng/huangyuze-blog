@@ -11,7 +11,7 @@ bannerBrand:
   description: 学习、记录、分享
   tagline: 不断前行，掌握更多技能栈，你会感谢未来的你。
   buttons:
-    - { text: 关于我, link: '/view/aboutMe' }
+    - { text: 关于我, link: '/docs/aboutMe' }
 isShowTitleInHome: true
 ---
 
