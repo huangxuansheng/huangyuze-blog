@@ -3,6 +3,7 @@ import type { DefaultThemeOptions } from "vuepress";
 import recoTheme from "vuepress-theme-reco";
 
 export default defineUserConfig({
+  port: 9000,
   head: [
     ["link", { rel: "icon", href: "/logo.png" }],
     [
@@ -312,8 +313,68 @@ export default defineUserConfig({
     },
     navbar: [
       { text: "首页", link: "/",icon: 'Home' },
-      { text: "优质项目", link: "/",icon: 'DocumentProtected' },
-      { text: "若依", link: "/", icon: 'VolumeObjectStorage'},
+      { 
+        text: "前端优质项目", 
+        icon: 'DocumentProtected',
+        link: "/"
+      },
+      { 
+        text: "若依框架", 
+        icon: 'VolumeObjectStorage',
+        children: [
+          { text: "RuoYi文档", link: "https://doc.ruoyi.vip/"},
+          { text: "RuoYi项目拓展", link: "https://doc.ruoyi.vip/ruoyi/document/xmkz.html"},
+          { text: "RuoYi-vue项目拓展", link: "https://doc.ruoyi.vip/ruoyi-vue/document/xmkz.html"},
+          { text: "RuoYi-cloud项目拓展", link: "https://doc.ruoyi.vip/ruoyi-cloud/document/xmkz.html"},
+          { text: "RuoYi-app项目拓展", link: "https://doc.ruoyi.vip/ruoyi-app/document/xmkz.html"},
+          { 
+            text: "Vue2项目", 
+            children:[
+              { text: "RuoYi源码", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi", ariaLabel: "若依框架" },
+              { text: "RuoYi-Vue前端分离版", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-vue", ariaLabel: "若依框架" },
+              { text: "RuoYi-Cloud微服务版", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-cloud", ariaLabel: "若依框架" },
+              { text: "RuoYi-App移动端版", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-app", ariaLabel: "若依框架" },
+              { text: "RuoYi-fast单应用版本", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-fast", ariaLabel: "若依框架" },
+              { text: "RuoYi-process工作流版本", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-process", ariaLabel: "若依框架" },
+              { text: "RuoYi-activity工作流版本", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-activity", ariaLabel: "若依框架" },
+              { text: "RuoYi-blog博客管理系统", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-blog", ariaLabel: "若依框架" },
+              { text: "RuoYi-content内容管理系统", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-content", ariaLabel: "若依框架" },
+              { text: "RuoYi-CMS的CMS信息化平台", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-yun-cms", ariaLabel: "若依框架" },
+              { text: "RuoYi-windPower风电场监控项目", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-wind-power", ariaLabel: "若依框架" },
+            ], 
+          },
+          { 
+            text: "Vue3项目", 
+            children:[
+              { text: "RuoYi-Vue3", link: "https://gitee.com/if-according-to-the-framework_1/RuoYi-Vue3", ariaLabel: "若依框架" },
+              { text: "RuoYi-Vue3-NET", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-vue3-net", ariaLabel: "若依框架" },
+              { text: "RuoYi-Vue3-FastApI", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-vue3-fast-api", ariaLabel: "若依框架" },
+              { text: "RuoYi-Vue3-go", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-vue3-go", ariaLabel: "若依框架" },
+              { text: "RuoYi-ts", link: "https://gitee.com/if-according-to-the-framework_1/ruoyi-ts", ariaLabel: "若依框架" },
+              { text: "RuoYi-Vue3-Ts", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-vue3-ts", ariaLabel: "若依框架" },
+            ],
+          },
+          { 
+            text: "App项目", 
+            children:[
+              { text: "RuoYi-flutter-app", link: "https://gitee.com/if-according-to-the-framework_1/ruoyi_flutter_app", ariaLabel: "若依框架" },
+              { text: "RuoYi-HM-app", link: "https://gitee.com/if-according-to-the-framework_1/rou-yi-app-hm", ariaLabel: "若依框架" },
+              { text: "RuoYi-Open-HM-app", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-open-hm", ariaLabel: "若依框架" },
+              { text: "RuoYi-Uview2-uniapp", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-uview2", ariaLabel: "若依框架" },
+              { text: "RuoYi-UviewPlus-vue3", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-uview-plus-vue3", ariaLabel: "若依框架" },
+              { text: "RuoYi-uniapp-vue3", link: "https://gitee.com/if-according-to-the-framework_1/ruo-yi-uniapp-vue3", ariaLabel: "若依框架" },
+            ],
+          },
+          
+        ]
+      },
+      { text: "移动端", icon: 'ApplicationWeb',
+        children: [
+          { text: "dart", link: "/docs/dart/", ariaLabel: "移动端" },
+          { text: "flutter", link: "/docs/flutter/", ariaLabel: "移动端" },
+          { text: "kotlin", link: "/docs/kotlin/", ariaLabel: "移动端" },
+        ]
+      },
       { 
         text: "前端", 
         icon: 'ApplicationWeb',
@@ -348,7 +409,6 @@ export default defineUserConfig({
           { text: "yunServer", link: "/docs/server/云服务器/", ariaLabel: "后端" },
         ]
       },
-      { text: "开发工具", link: "/",icon: 'Tools' },
       { text: "服务器部署", link: "/",icon: 'ServerDns' },
       { 
         text: "学习资料",
