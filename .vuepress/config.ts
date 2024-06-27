@@ -51,6 +51,10 @@ export default defineUserConfig({
       "/docs/flutter/flutter/": [
         "flutter知识整理.md",
       ],
+      //kotlin
+      "/docs/android/kotlin/": [
+        "kotlin.md",
+      ],
       //css
       "/docs/interView/css/": [
         "BFC.md",
@@ -377,7 +381,7 @@ export default defineUserConfig({
           
         ]
       },
-      { text: "移动端", icon: 'ApplicationAndroid',
+      { text: "移动端", icon: 'ApplicationWeb',
         children: [
           { text: "dart", link: "/docs/flutter/dart/", ariaLabel: "移动端" },
           { text: "flutter", link: "/docs/flutter/flutter/", ariaLabel: "移动端" },
