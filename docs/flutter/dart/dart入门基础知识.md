@@ -1,22 +1,19 @@
+# Dart入门基础知识
+
 ## 1.入口方法
 
-```
+```dart
 main(){
-
-print('hello dart');
-
+  print('hello dart');
 }
 ```
 
 或者：
 
-```
+```dart
 //void代表没有返回值
-
 void main(){
-
-print('hello dart');
-
+  print('hello dart');
 }
 ```
 
@@ -26,16 +23,11 @@ dart是一种强大的脚本语言，可以不预先定义变量的类型，dart
 
    可以通过var的关键字声明变量，也可通过显式类型来声明
 
-```
-
+```dart
 如：
-
     var str = 'i am dart';
-
     string str = 'i am dart';
-
     var str =123;
-
     int str =123;
 
 注意： var关键字和具体类型不要同时写，如：var int str =123;   报错
@@ -61,15 +53,12 @@ const修饰的常量在一开始的时候就需要赋值（编译的时候就已
 
 final修饰的常量可以在一开始的时候不赋值，但同样只能赋值一次（惰性赋值，运行时第一次使用时赋值）
 
-```
+```dart
 //const常量
-
 const PI=3.14159；
-
 PI=3；               //错误，常量的值不能修改了
 
 //final常量
-
 final a=new DateTime.now();     //给a运行时赋值
 ```
 
@@ -91,15 +80,14 @@ final a=new DateTime.now();     //给a运行时赋值
 
 #### 5.1.1  int 整型
 
-```
+```dart
 int a = 1;
 ```
 
 #### 5.1.2  double 浮点型
 
-```
+```dart
 double b = 2.5 ;
-
 double b = 2 ;    // 给浮点型变量赋值整型不会报错,但输出的结果会自动补小数点后的0
 ```
 
@@ -111,13 +99,10 @@ double b = 2 ;    // 给浮点型变量赋值整型不会报错,但输出的结�
 
 1）可以用单引号，也可以用双引号
 
-```
+```dart
 var str1 = ' i am str1';
-
 或  String str1 = ' i am str1';
-
 var str2 = "i am str2";
-
 或 String str2 = "i am str2";
 ```
 
@@ -125,31 +110,23 @@ var str2 = "i am str2";
 
 使用三引号定义字符串可以换行
 
-```
+```dart
 String str3='''
-
 i am str1
-
 i am str2
-
 i am str3''';
 
 或：
-
 String str3="""
-
 i am str1
-
 i am str2
-
 i am str3""";
 ```
 
 3）字符串拼接
 
-```
+```dart
 print("$str1 $str2");
-
 print(str1 + str2);
 ```
 
@@ -157,25 +134,19 @@ print(str1 + str2);
 
 5.3.1 bool
 
-```
+```dart
 bool b1 = true;
-
 bool b2 = false;
 ```
 
 5.3.2 条件判断语句
 
-```
+```dart
 var b1=true;
-
 if(b1){
-
-print('true');
-
+  print('true');
 }else{
-
-print('false');
-
+  print('false');
 }
 ```
 
@@ -183,7 +154,7 @@ print('false');
 
 #### 5.4.1 第一种定义List的方式
 
-```
+```dart
 var l1=['a','b','c'];
 print(l1);           // 输出[a, b, c]
 print(l1.length);    // 输出3
@@ -192,14 +163,14 @@ print(l1[0]);        // 输出a
 
 #### 5.4.2 第二种定义List的方式
 
-> ```
+> ```dart
 > var l2= new List();
 > l2.add('one');
 > l2.add('two');
 > l2.add('three');
 > ```
 >
-> ```
+> ```dart
 > print(l2); // 输出[one, two, three]
 > print(l2.length); // 输出3 
 > print(l2[0]); // 输出one
@@ -207,7 +178,7 @@ print(l1[0]);        // 输出a
 
 #### 5.4.3 指定list的类型
 
-> ```
+> ```dart
 > var l2= new List<String>();
 > ```
 
@@ -215,7 +186,7 @@ print(l1[0]);        // 输出a
 
 #### 5.5.1  第一种定义方式
 
-> ```
+> ```dart
 > var persion={
 >   "name":"Dart",
 >   "age":"8"
@@ -227,18 +198,18 @@ print(l1[0]);        // 输出a
 
 #### 5.5.2  第二种定义方式
 
-> ```
-> var persion1=new Map();
-> persion1["name"]="张三";
-> persion1["age"]="9";
-> print(persion1);                //输出 {name: 张三, age: 9}
-> print(persion1['name']);        //输出 张三
-> print(persion1['age']);         //输出 9
-> ```
+```dart
+var persion1=new Map();
+persion1["name"]="张三";
+persion1["age"]="9";
+print(persion1);                //输出 {name: 张三, age: 9}
+print(persion1['name']);        //输出 张三
+print(persion1['age']);         //输出 9
+```
 
 ### **5.6 类型判断（is 关键字）**
 
-> ```
+> ```dart
 >   var str = '111';
 >   if (str is String) {
 >     print("str is String type");
@@ -247,7 +218,6 @@ print(l1[0]);        // 输出a
 >   } else {
 >     print("str is other type");
 >   }
-> }
 > ```
 >
 > 结果 ： 输出  str is String type
@@ -268,7 +238,7 @@ print(l1[0]);        // 输出a
 
 **6.1 算数运算符**
 
-> ```
+> ```dart
 > int a=5;
 > int b=4;
 >  
@@ -280,7 +250,7 @@ print(l1[0]);        // 输出a
 > print(a~/b); //取整
 > ```
 
-> ```
+> ```dart
 > 1
 > 20
 > 1.25
@@ -290,7 +260,7 @@ print(l1[0]);        // 输出a
 
 ### 6.2 关系运算符
 
-> ```
+> ```dart
 > int a=5;
 > int b=4;
 >  
@@ -315,7 +285,7 @@ print(l1[0]);        // 输出a
 
 #### 6.3.1 取反（！）
 
-> ```
+> ```dart
 > var b =false;
 > print(!b);       //输出为true
 > ```
@@ -324,7 +294,7 @@ print(l1[0]);        // 输出a
 
 当且仅当所有的值都为true的时候，结果才为true，否则为false
 
-```
+```dart
 var a = true;
 var b = false;
 print(b && a);    // 输出false
@@ -334,7 +304,7 @@ print(b && a);    // 输出false
 
 只要有一个值为true，则结果为true
 
-```
+```dart
 var a = true;
 var b = false;
 print(b || a);    // 输出true
@@ -344,21 +314,20 @@ print(b || a);    // 输出true
 
 #### 6.4.1 直接赋值（=）
 
-```
+```dart
 int b = 6;
 ```
 
 #### 6.4.2 判断为空之后赋值（？？=）
 
-```
+```dart
 int b;
-
-   b??=6;   //当 b在这之前没有被赋值，则在这行代码中会被赋值
+  b??=6;   //当 b在这之前没有被赋值，则在这行代码中会被赋值
 ```
 
 #### 6.4.3 复合赋值运算符（+=，-=，*=，/=，%=，~/=）
 
-> ```
+> ```dart
 > int b = 6;
 > b += 10;
 > print(b);   //输出 16
@@ -366,7 +335,7 @@ int b;
 
 #### 6.5.2  switch case
 
-```
+```dart
 var sex = "boy";
 switch(sex){
   case "boy" :
@@ -384,7 +353,7 @@ switch(sex){
 
 #### 6.5.3 三目运算（ ？ ：）
 
-```
+```dart
 解释：当等号=后的变量为true时，给变量赋值 ： 前面的值，当flag为false时，给 变量赋值 ： 后面的值
  
 bool flag = true;
@@ -397,8 +366,7 @@ print(b);
 ```
 
 #### 6.5.4   ??运算符
-
-> ```
+> ```dart
 > 解释：当a为null时，赋值？？符号后的10给a，然后将a赋值给b.
 >       当a不为null时，直接将a赋值给b
 >  
@@ -407,7 +375,7 @@ print(b);
 > print(b);    // 输出10
 > ```
 >
-> ```
+> ```dart
 > var a=20;
 > var b = a ?? 10;
 > print(b);    //输出20
@@ -421,20 +389,20 @@ Number 转换为 String使用toString();
 
 String转换为 Number 使用parse();
 
-> ```
+> ```dart
 > //将字符串转换为整型
 > String str='111';
 > var myNum=int.parse(str);    //输出 111
 > ```
 >
-> ```
+> ```dart
 > //将整型转换为字符串
 > var myNum = 18;
 > var str = myNum.toString();
 > print(str is String);        //输出 true
-> ```
+> ```dart
 >
-> ```
+> ```dart
 > String str = '';   //字符串为空，转换为整型会报错
 > try {
 >   var myNum = int.parse(str);
@@ -448,7 +416,7 @@ String转换为 Number 使用parse();
 
 ### **7.1 for循环**
 
-```
+```dart
 for (int i = 0; i < 5; i++) {
   print(i);
 }
@@ -466,7 +434,7 @@ for (int i = 0; i < 5; i++) {
 
 while :  先判断条件在进行操作
 
-> ```
+> ```dart
 > var i = 0;
 > while (i < 5) {
 >   print(i);
@@ -484,7 +452,7 @@ while :  先判断条件在进行操作
 
 > do while: 先进行操作再判断条件
 >
-> ```
+> ```dart
 > do {
 >   print(i);
 >   i++;
@@ -531,7 +499,7 @@ continue：1.只能在循环语句中使用
 
 在参数中用中括号[ ] 包含的参数为位置可选参数：（调用的时候可以带上[ ]中的参数，也可不带，也可以带上其中几个）
 
-> ```
+> ```dart
 > String getPersionInfo(String name, [int age, String sex]) {
 >   return "name : $name   ;    age : $age    ;    sex : $sex";
 > }
@@ -542,7 +510,7 @@ continue：1.只能在循环语句中使用
 
 ##### 8.2.1.1 可选参数可以通过"="赋一个默认值
 
-```
+```dart
 String getPersionInfo(String name, [int age, String sex = "man"]) {
   return "name : $name   ;    age : $age    ;    sex : $sex";
 }
@@ -555,7 +523,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 在参数中用{ }包含的参数为命名可选参数
 
-> ```
+> ```dart
 > String getPersionInfo(String name, {int age, String sex = "man"}) {
 >   return "name : $name  -----  age : $age  -----  sex : $sex";
 > }
@@ -575,7 +543,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 #### 8.2.3 方法可以作为参数传递
 
-> ```
+> ```dart
 > //方法，可作为参数
 > method1() {
 >   print("I am method one");
@@ -596,7 +564,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 >
 > 解释：和匿名方法一样:
 >
-> ```
+> ```dart
 > var fn=(){
 >   print("一个匿名方法");
 > };
@@ -611,7 +579,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 例如以下函数体可以改为用箭头=>指向：
 
-> ```
+> ```dart
 > 使用箭头表示前：
 >
 > // 当数组中的元素大于5，则返回5
@@ -630,7 +598,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 >
 > ```
 >
-> ```
+> ```dart
 > //使用三目运算，将函数体简化成一句话，输出的结果和上面的例子是一样的
 >  
 > List list = [2, 4, 6, 5, 8];
@@ -644,7 +612,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 匿名方法，顾名思义，即是没有名字的方法，匿名方法可以赋值给一个变量，例如：
 
-> ```
+> ```dart
 > var fun = () {             //定义了一个变量fun()，这个变量的值是后面的方法体（匿名方法）
 >   print("我是匿名方法");
 > };
@@ -655,7 +623,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 注：这个匿名方法也可以带参数。
 
-> ```
+> ```dart
 > var fun = (int i) {               //定义了一个变量fun,使用这个变量的时候需要带上一个参数
 >   print("我是匿名方法 ：$i");
 > };
@@ -680,7 +648,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 顾名思义，自执行方法，即指不需要主动的调用该方法，当程序启动的时候会自动执行该段代码；
 
-```
+```dart
 ((){
  //这里输入代码内容 
 })();
@@ -694,7 +662,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 在括号里可以定义传入的参数，在第一个括号里定义形参，在最后一个括号里传入实参，如：
 
-> ```
+> ```dart
 > ((int i) {
 >   print(i);
 >   print("这是一段自执行代码！");
@@ -738,7 +706,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
   当通过指定的命名构造函数实例化对象时，会调用改命名构造函数，命名构造函数可以有多个。
 
 
-> ```
+> ```dart
 > class Persion {                                  //persion为类名
 >   String name;                                   //属性
 >   int age;
@@ -781,7 +749,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 如私有属性（私有方法同理）：
 
 
-> ```
+> ```dart
 > class Persion {
 >   String _name;                            //私有属性
 >  
@@ -809,7 +777,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 如：
 
-> ```
+> ```dart
 > class Persion {
 >   String _name;
 >  
@@ -844,7 +812,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 ##### 9.1.5.1使用static 关键字来实现类级别的变量和函数
 
-> ```
+> ```dart
 > class Persion {
 >   static String name = "深圳";                  //name为static修饰的静态变量
 >  
@@ -877,7 +845,7 @@ String getPersionInfo(String name, [int age, String sex = "man"]) {
 
 在对象的后面使用？判断该对象是否是null.
 
-```
+```dart
 class Persion {
   String name = "深圳";
   Persion(this.name);
@@ -896,7 +864,7 @@ void main() {
 
 使用 is 判断该变量是什么数据类型
 
-> ```
+> ```dart
 > Persion man=new Persion("name");
 > if(man is Persion){                          //判断man是否是Persion类型
 >   print("true");
@@ -918,7 +886,7 @@ void main() {
 
 在对象的后面使用级联符号“..”加属性或方法,会返回对象的本身，类似于java中的Builde建造者模式
 
-> ```
+> ```dart
 > class Persion {
 >   String name ;
 >   int age ;
@@ -954,7 +922,7 @@ void main() {
 
  如:
 
-> ```
+> ```dart
 > class Persion {
 >   String name ;
 >   int age ;
@@ -982,7 +950,7 @@ void main() {
 
 2）在子类中不仅仅可以扩展父类中的属性或者方法，还能重写父类中的方法
 
-> ```
+> ```dart
 > class Persion {
 >   String name;
 >  
@@ -1016,7 +984,7 @@ void main() {
 
 3）可以通过super关键字调用父类的方法
 
-> ```
+> ```dart
 > class Persion {
 >   String name;
 >  
@@ -1072,7 +1040,7 @@ extends抽象类 和 implement 的区别：
 
 如：
 
-```
+```dart
 abstract class Animal {                                //Animal 为抽象类
   eat();                                               //没有实现方法体，默认是一个抽象方法
 }
@@ -1086,7 +1054,7 @@ class Dog extends Animal{
 
 下面直接通过抽象类进行初始化，会报错
 
-```
+```dart
 Animal a = new Animal();                           //会报错
 
 ```
@@ -1094,7 +1062,7 @@ Animal a = new Animal();                           //会报错
 
 #### **9.1.9 多态**
 
-```
+```dart
 Animal d = new Dog();                   //使用d.eat()的时候会调用Dog类中复写的eat()方法
 Animal c = new Cat();                   //使用c.eat()的时候会调用Cat类中复写的eat()方法
 ```
@@ -1112,7 +1080,7 @@ Animal c = new Cat();                   //使用c.eat()的时候会调用Cat类�
    如：
 
 
-> ```
+> ```dart
 > abstract class Animal {                           //抽象类，用作接口
 >   String size;
 >   eat() {
@@ -1134,7 +1102,7 @@ Animal c = new Cat();                   //使用c.eat()的时候会调用Cat类�
 
 实现多个接口，通过逗号“，”分隔
 
-> ```
+> ```dart
 > abstract class A {
 >   String name;
 >   doA(){}
@@ -1175,7 +1143,7 @@ mixins的使用条件随着Dart的版本不断更新而有所改变，此处讲�
 
 > 如：
 >
-> ```
+> ```dart
 > class A {                                           //A作为minxins类，只能继承自Object
 >   doA() {
 >     print("I am A");
@@ -1205,7 +1173,7 @@ mixins的使用条件随着Dart的版本不断更新而有所改变，此处讲�
 
 **疑问：当两个混合类A和B中有相同的方法，那么C类中调用这个方法会产生什么样的结果呢？**
 
-> ```
+> ```dart
 > class A {
 >   run() {                                         //A类中run()方法
 >     print("run A");                            
@@ -1251,7 +1219,7 @@ mixins的使用条件随着Dart的版本不断更新而有所改变，此处讲�
 
 先看一个例子:
 
-> ```
+> ```dart
 > getData(int value) {
 >   return value * 2;
 > }
@@ -1268,7 +1236,7 @@ mixins的使用条件随着Dart的版本不断更新而有所改变，此处讲�
 
 如：
 
-> ```
+> ```dart
 > getData(String value) {
 >   return value;
 > }
@@ -1285,7 +1253,7 @@ mixins的使用条件随着Dart的版本不断更新而有所改变，此处讲�
 
     以下“T”为不固定的传入类型：
 
-> ```
+> ```dart
 > T getData<T>(T value) {                                    //传入的实参是什么类型，则“T”就代表该类型
 >   return value;
 > }
@@ -1300,7 +1268,7 @@ mixins的使用条件随着Dart的版本不断更新而有所改变，此处讲�
 
 #### 10.2.1 实例化类的时候没有指定类型
 
-> ```
+> ```dart
 > class ListClass<T> {                                              //定义泛型类
 >   List list = new List<T>();
 >  

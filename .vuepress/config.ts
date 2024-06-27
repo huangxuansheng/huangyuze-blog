@@ -31,7 +31,7 @@ export default defineUserConfig({
     contributors: true,
     contributorsText: "贡献者列表",
     toggleDarkMode: "切换主题",
-    colorMode: "dark", //  默认主题颜色
+    colorMode: "light", //  默认主题颜色
     serviceWorker: {
       updatePopup: {
         message: "发现新内容可用.",
@@ -44,7 +44,12 @@ export default defineUserConfig({
       series: "auto",
       //dart
       "/docs/flutter/dart/": [
-        "dart.md",
+        "dart入门基础知识.md",
+        "dart知识整理.md",
+      ],
+      //flutter
+      "/docs/flutter/flutter/": [
+        "flutter知识整理.md",
       ],
       //css
       "/docs/interView/css/": [
