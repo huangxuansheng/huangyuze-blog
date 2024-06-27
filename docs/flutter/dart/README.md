@@ -6104,68 +6104,61 @@ try {
 }
 ```
 您可以在一个async函数中多次使用await。 例如，以下代码等待 3 次 对于函数的结果：
-
+```dart
 var entrypoint = await findEntryPoint();
 var exitCode = await runExecutable(entrypoint, args);
 await flushThenExit(exitCode);
-1
-2
-3
+```
 在 await 表达式中，表达式的值通常是一个 Future；如果不是，则该值将自动包装在一个 Future 中。这个 Future 对象表示了一个返回对象的承诺。await 表达式的值就是返回的那个对象。await 表达式会使执行暂停，直到该对象可用。
 
 如果您在使用 await 时遇到编译时错误，请确保 await 位于一个异步函数中。例如，要在您的应用中的 main() 函数中使用 await，main() 函数的主体必须被标记为 async：
-
+```dart
 void main() async {
   checkVersion();
   print('In main: version is ${await lookUpVersion()}');
 }
-1
-2
-3
-4
+```
 前面的例子使用了一个异步函数（checkVersion()），但没有等待其结果——如果代码假设该函数已经执行完毕，这种做法可能会导致问题。为了避免这个问题，请使用 unawaited_futures linter 规则。
 
 要了解如何交互地使用 futures、async 和 await，请参见异步编程代码实验室。
 
-声明异步函数 Declaring async functions
+#### 声明异步函数 Declaring async functions
 异步函数是一个其主体被标记为 async 修饰符的函数。
 
 在函数前添加 async 关键字会使其返回一个 Future。例如，考虑这个同步函数，它返回一个 String：
-
+```dart
 String lookUpVersion() => ‘1.0.0’;
-
+```
 如果你将其改为异步函数——例如，因为未来的实现将耗费时间——那么返回的值将是一个 Future：
-
+```dart
 Future `<String>` lookUpVersion() async => '1.0.0';
-1
+```
 请注意，函数的主体并不需要使用 Future API。如果需要，Dart 会创建 Future 对象。如果你的函数不返回有用的值，请将其返回类型设为 Future。
 
 要了解如何交互地使用 futures、async 和 await，请参见异步编程代码实验室。
 
-Handling Streams
+#### Handling Streams
 当你需要从 Stream 中获取值时，你有两种选择：
 
-使用 async 和异步 for 循环（await for）。
-使用 Stream API，如 dart:async 文档所述。
+* 使用 async 和异步 for 循环（await for）。
+* 使用 Stream API，如 dart:async 文档所述。
 在使用 await for 之前，请确保它能使代码更清晰，并且你真的需要等待流的所有结果。例如，你通常不应该在 UI 事件监听器中使用 await for，因为 UI 框架会发送无限的事件流。
 
 异步 for 循环的形式如下：
-
+```dart
 await for (varOrType identifier in expression) {
   // Executes each time the stream emits a value.
 }
-1
-2
-3
+```
 表达式的值必须为 Stream 类型。执行过程如下：
 
-等待流发出一个值。
-使用该发出的值设置变量，并执行 for 循环的主体。
-重复步骤 1 和 2，直到流关闭。
+* 等待流发出一个值。
+* 使用该发出的值设置变量，并执行 for 循环的主体。
+* 重复步骤 1 和 2，直到流关闭。
 要停止监听流，你可以使用 break 或 return 语句，这会中断 for循环并取消订阅流。
 
 如果你在实现异步for循环时遇到编译时错误，请确保 await for 位于一个异步函数中。例如，要在你的应用的 main() 函数中使用异步for循环，main() 函数的主体必须被标记为 async：
-
+```dart
 void main() async {
   // ...
   await for (final request in requestServer) {
@@ -6173,42 +6166,36 @@ void main() async {
   }
   // ...
 }
-1
-2
-3
-4
-5
-6
-7
+```
 有关 Dart 异步编程支持的更多信息， 查看 dart:async 库文档。
 
-Lsolates
+##### Lsolates
 本页面讨论了一些使用 Isolate API 实现隔离区的示例。
 
 当你的应用程序正在处理大到足以暂时阻止其他计算的计算任务时，你应该使用隔离区。最常见的例子是在 Flutter 应用程序中，当你需要执行大型计算任务，而这些任务可能会使 UI 变得无响应时。
 
 虽然并没有规定何时必须使用隔离区，但以下是一些隔离区可能派上用场的情况：
 
-解析和解码特别大的 JSON 数据块。
-处理和压缩照片、音频和视频。
-转换音频和视频文件。
-对大型列表或文件系统中的数据进行复杂搜索和过滤。
-执行 I/O 操作，例如与数据库通信。
-处理大量的网络请求。
+* 解析和解码特别大的 JSON 数据块。
+* 处理和压缩照片、音频和视频。
+* 转换音频和视频文件。
+* 对大型列表或文件系统中的数据进行复杂搜索和过滤。
+* 执行 I/O 操作，例如与数据库通信。
+* 处理大量的网络请求。
 实现一个简单的工作隔离区 Implementing a simple worker isolate
 这些示例实现了一个主隔离区，该隔离区生成了一个简单的工作隔离区。Isolate.run() 简化了设置和管理工作隔离区的步骤：
 
-生成（启动并创建）一个隔离区。
-在生成的隔离区上运行一个函数。
-捕获结果。
-将结果返回给主隔离区。
-完成工作后终止隔离区。
-检查、捕获异常和错误，并将其返回给主隔离区。
+*生成（启动并创建）一个隔离区。
+* 在生成的隔离区上运行一个函数。
+* 捕获结果。
+* 将结果返回给主隔离区。
+* 完成工作后终止隔离区。
+* 检查、捕获异常和错误，并将其返回给主隔离区。
 如果你正在使用 Flutter，可以使用 Flutter 的 compute 函数，而不是 Isolate.run()。
 
 在新的隔离区中运行已存在的方法 Running an existing method in a new isolate
 1.调用 run() 来在主隔离区中直接生成一个新的隔离区（后台工作线程），而 main() 则等待结果：
-
+```dart
 const String filename = 'with_keys.json';
 
 void main() async {
@@ -6218,27 +6205,15 @@ void main() async {
   // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
+```
 2.将你想要工作隔离区执行的函数作为它的第一个参数传递给它。在这个例子中，这个现有的函数是 _readAndParseJson()：
-
+```dart
 Future<Map<String, dynamic>> _readAndParseJson() async {
   final fileData = await File(filename).readAsString();
   final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
   return jsonData;
 }
-1
-2
-3
-4
-5
+``
 3.Isolate.run() 接收 _readAndParseJson() 返回的结果，并将值发送回主隔离区，然后关闭工作隔离区。
 
 4.工作隔离区将保存结果的内存转移到主隔离区。它不会复制数据。工作隔离区执行一个验证过程，以确保对象允许被转移。
@@ -6251,7 +6226,7 @@ Isolate.run() 的结果总是一个 Future，因为主隔离区中的代码会�
 
 使用隔离区发送闭包 Sending closures with isolates
 你也可以直接在主隔离区中使用函数字面量或闭包，通过 run() 创建一个简单的工作隔离区。
-
+```dart
 const String filename = 'with_keys.json';
 
 void main() async {
@@ -6265,19 +6240,7 @@ void main() async {
   // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
+```
 这个例子与之前的例子实现了相同的功能。新的隔离区被生成，执行一些计算，并发送回结果。
 
 然而，现在隔离区发送的是一个闭包。闭包在功能和编写方式上都比典型的命名函数限制更少。在这个例子中，Isolate.run() 并发地执行了看起来像是本地代码的内容。从这个意义上讲，你可以将 run() 想象成一个控制流操作符，用于“并行运行”。
@@ -6287,12 +6250,12 @@ void main() async {
 
 为此，你可以使用 Isolate.run 抽象出来的一些低级隔离区 API：
 
-Isolate.spawn() 和 Isolate.exit()
-ReceivePort 和 SendPort
-SendPort.send() 方法
+* Isolate.spawn() 和 Isolate.exit()
+* ReceivePort 和 SendPort
+* SendPort.send() 方法
 本节将介绍在新生成的隔离区和主隔离区之间建立双向通信所需的步骤。第一个示例“基本端口”从高级别介绍了这个过程。第二个示例“健壮端口”则逐渐为第一个示例添加更多实用、现实世界的功能。
 
-ReceivePort and SendPort
+##### ReceivePort and SendPort
 在隔离区之间设置长期通信需要两个类（除了 Isolate）：ReceivePort 和 SendPort。这些端口是隔离区之间通信的唯一方式。
 
 ReceivePort 是一个对象，用于处理从其他隔离区发送的消息。这些消息通过 SendPort 发送。
@@ -6301,7 +6264,7 @@ ReceivePort 是一个对象，用于处理从其他隔离区发送的消息。�
 
 端口的行为类似于 Stream 对象（事实上，接收端口实现了 Stream！）你可以将 SendPort 和 ReceivePort 分别视为 Stream 的 StreamController 和监听器。SendPort 类似于 StreamController，因为你可以使用 SendPort.send() 方法将消息“添加”到其中，这些消息由监听器处理，在这种情况下是 ReceivePort。然后，ReceivePort 将它接收到的消息作为你提供的回调函数的参数进行处理。
 
-设置端口
+##### 设置端口
 
 新生成的隔离区只包含通过 Isolate.spawn 调用接收到的信息。如果你需要在隔离区初始创建之后继续让主隔离区与生成的隔离区进行通信，你必须设置一个通信通道，以便生成的隔离区可以向主隔离区发送消息。隔离区只能通过消息传递进行通信。它们无法“查看”彼此的内存内容，这就是“隔离区”这个名称的由来。
 
@@ -6309,17 +6272,17 @@ ReceivePort 是一个对象，用于处理从其他隔离区发送的消息。�
 
 本节中的图表是高级别的，旨在传达使用端口进行隔离区通信的概念。实际实现需要更多的代码，稍后在页面上你会找到相关内容。
 
-在主隔离区中创建一个 ReceivePort。SendPort 作为 ReceivePort 的一个属性会自动创建。
-使用 Isolate.spawn() 生成工作隔离区
-将 ReceivePort.sendPort 的引用作为第一条消息传递给工作隔离区。
-在工作隔离区中创建另一个新的 ReceivePort。
-将工作隔离区的 ReceivePort.sendPort 的引用作为第一条消息发送回主隔离区。
+* 在主隔离区中创建一个 ReceivePort。SendPort 作为 ReceivePort 的一个属性会自动创建。
+* 使用 Isolate.spawn() 生成工作隔离区
+* 将 ReceivePort.sendPort 的引用作为第一条消息传递给工作隔离区。
+* 在工作隔离区中创建另一个新的 ReceivePort。
+* 将工作隔离区的 ReceivePort.sendPort 的引用作为第一条消息发送回主隔离区。
 除了创建端口和设置通信之外，你还需要告诉端口在接收到消息时应该做什么。这可以通过在每个相应的 ReceivePort 上使用 listen 方法来完成。
 
-通过主隔离区对工作隔离区 SendPort 的引用发送消息。
-通过工作隔离区 ReceivePort 上的监听器接收并处理消息。这是你想要从主隔离区移出的计算被执行的地方。
-通过工作隔离区对主隔离区 SendPort 的引用发送返回消息。
-通过主隔离区 ReceivePort 上的监听器接收消息。
+* 通过主隔离区对工作隔离区 SendPort 的引用发送消息。
+* 通过工作隔离区 ReceivePort 上的监听器接收并处理消息。这是你想要从主隔离区移出的计算被执行的地方。
+* 通过工作隔离区对主隔离区 SendPort 的引用发送返回消息。
+* 通过主隔离区 ReceivePort 上的监听器接收消息。
 基本端口示例 Basic ports example
 这个示例展示了如何设置一个长时间运行的工作隔离区，并实现它与主隔离区之间的双向通信。代码使用了一个发送 JSON 文本到新隔离区的例子，这个 JSON 文本将被解析和解码，然后发送回主隔离区。
 
@@ -6327,7 +6290,7 @@ ReceivePort 是一个对象，用于处理从其他隔离区发送的消息。�
 它没有涵盖生产软件中预期的重要功能部分，如错误处理、关闭端口和消息排序。
 下一节的“稳健端口”示例涵盖了这些功能，并讨论了在缺少这些功能时可能出现的一些问题。
 
-第一步：定义工作类
+##### 第一步：定义工作类
 
 首先，为你的后台工作隔离区创建一个类。这个类包含了你需要实现的所有功能，包括：
 
@@ -6338,7 +6301,7 @@ ReceivePort 是一个对象，用于处理从其他隔离区发送的消息。�
 这个类公开了两个方法：一个用于生成工作隔离区，另一个用于处理向该工作隔离区发送消息。
 
 本示例的后续部分将向你展示如何逐一填充类的方法。
-
+```dart
 class Worker {
   Future `<void>` spawn() async {
     // TODO: Add functionality to spawn a worker isolate.
@@ -6358,50 +6321,31 @@ class Worker {
   }
 }
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-第二步：生成工作隔离区
+```
+##### 第二步：生成工作隔离区
 
 Worker.spawn 方法用于将创建工作隔离区并确保其能够接收和发送消息的代码组合在一起。
 
 首先，创建一个 ReceivePort。这允许主隔离区接收从新生成的工作隔离区发送的消息。
 接下来，向接收端口添加一个监听器，以处理工作隔离区将发送回的消息。传递给监听器的回调函数 _handleResponsesFromIsolate 将在第四步中介绍。
 最后，使用 Isolate.spawn 生成工作隔离区。它期望两个参数：一个在工作隔离区上执行的函数（在第三步中介绍），以及接收端口的 sendPort 属性。
+```dart
 Future `<void>` spawn() async {
   final receivePort = ReceivePort();
   receivePort.listen(_handleResponsesFromIsolate);
   await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
 }
-1
-2
-3
-4
-5
+```
 当在工作隔离区上调用回调函数（_startRemoteIsolate）时，receivePort.sendPort 参数将被传递给它作为参数。这是确保工作隔离区有方法将消息发送回主隔离区的第一步。
 
-第三步：在工作隔离区上执行代码
+##### 第三步：在工作隔离区上执行代码
 
 在这一步中，你定义了 _startRemoteIsolate 方法，该方法被发送到工作隔离区并在其生成时执行。这个方法类似于工作隔离区的“主”方法。
 
 首先，创建另一个新的 ReceivePort。这个端口用于接收来自主隔离区的未来消息。
 接下来，将该端口的 SendPort 发送回主隔离区。
 最后，向新的 ReceivePort 添加一个监听器。这个监听器处理主隔离区发送给工作隔离区的消息。
+```dart
 static void _startRemoteIsolate(SendPort port) {
   final receivePort = ReceivePort();
   port.send(receivePort.sendPort);
@@ -6413,41 +6357,27 @@ static void _startRemoteIsolate(SendPort port) {
     }
   });
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
+```
 工作隔离区的 ReceivePort 上的监听器解码从主隔离区传递的 JSON，然后将解码后的 JSON 发送回主隔离区。
 
 这个监听器是主隔离区向工作隔离区发送消息的入口点。这是你唯一的机会告诉工作隔离区将来要执行什么代码。
 
-第四步：在主隔离区上处理消息
+##### 第四步：在主隔离区上处理消息
 
 最后，你需要告诉主隔离区如何处理从工作隔离区发送回主隔离区的消息。为此，你需要填充 _handleResponsesFromIsolate 方法。回想一下，在第二步中，我们曾提到将这个方法传递给 receivePort.listen 方法。
-
+```dart
 Future `<void>` spawn() async {
   final receivePort = ReceivePort();
   receivePort.listen(_handleResponsesFromIsolate);
   await Isolate.spawn(_startRemoteIsolate, receivePort.sendPort);
 }
-1
-2
-3
-4
-5
+```
 同时，请回想在第三步中，你曾向主隔离区发送了一个 SendPort。这个方法负责接收那个 SendPort，以及处理未来的消息（这些消息将是解码后的 JSON）。
 
 首先，检查消息是否是 SendPort。如果是，将该端口分配给类的 _sendPort 属性，以便稍后可以用于发送消息。
 
 接下来，检查消息是否是 Map<String, dynamic> 类型，这是解码后 JSON 的预期类型。如果是，使用你的应用程序特定的逻辑来处理该消息。在这个例子中，消息将被打印出来。
-
+```dart
 void _handleResponsesFromIsolate(dynamic message) {
   if (message is SendPort) {
     _sendPort = message;
@@ -6456,31 +6386,22 @@ void _handleResponsesFromIsolate(dynamic message) {
     print(message);
   }
 }
-1
-2
-3
-4
-5
-6
-7
-8
-第五步：添加一个 completer 以确保隔离区已设置完毕
+```
+##### 第五步：添加一个 completer 以确保隔离区已设置完毕
 
 为了完成这个类，定义一个名为 parseJson 的公共方法，该方法负责向工作隔离区发送消息。它还需要确保在隔离区完全设置之前可以发送消息。为此，使用 Completer。
 
 首先，添加一个名为 _isolateReady 的类级别属性，并将其类型设置为 Completer。
 接下来，在 _handleResponsesFromIsolate 方法（在第四步中创建）中，如果消息是 SendPort，则在该 completer 上调用 complete() 方法。
 最后，在 parseJson 方法中，在调用 _sendPort.send 之前添加 await _isolateReady.future。这确保了直到工作隔离区生成并将其 SendPort 发送回主隔离区之前，都无法向工作隔离区发送任何消息。
+```dart
 Future `<void>` parseJson(String message) async {
   await _isolateReady.future;
   _sendPort.send(message);
 }
-1
-2
-3
-4
+```
 完整示例
-
+```dart
 import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
@@ -6527,61 +6448,16 @@ class Worker {
     _sendPort.send(message);
   }
 }
+```
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-健壮端口示例 Robust ports example
+#### 健壮端口示例 Robust ports example
 前面的例子解释了设置具有双向通信的长寿命隔离区所需的基本构建块。正如所提到的，那个例子缺少一些重要特性，比如错误处理、在不再使用端口时关闭端口的能力，以及在某些情况下消息排序的不一致性。
 
 这个例子在第一个例子的基础上进行了扩展，创建了一个具有这些额外特性以及更多特性的长寿命工作隔离区，并遵循了更好的设计模式。虽然这段代码与第一个例子有相似之处，但它并不是那个例子的扩展。
 
 这个例子假设你已经熟悉使用 Isolate.spawn 和端口在隔离区之间建立通信，这在前面的例子中已经介绍过。
 
-第一步：定义工作类
+##### 第一步：定义工作类
 
 首先，为你的后台工作隔离区创建一个类。这个类包含了你所需的所有功能，包括：
 
@@ -6590,7 +6466,7 @@ class Worker {
 让隔离区解码一些 JSON。
 将解码后的 JSON 发送回主隔离区。
 这个类公开了三个公共方法：一个用于创建工作隔离区，一个用于处理向该工作隔离区发送消息，还有一个用于在不再使用端口时关闭它们。
-
+```dart
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
@@ -6622,41 +6498,10 @@ class Worker {
     // TODO: Initialize worker isolate's ports.
   }
 }
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
+```
 在这个例子中，SendPort 和 ReceivePort 实例遵循最佳命名约定，即它们根据主隔离区进行命名。从主隔离区通过 SendPort 发送给工作隔离区的消息称为命令，而发送回主隔离区的消息称为响应。
 
-第二步：在 Worker.spawn 方法中创建 RawReceivePort
+##### 第二步：在 Worker.spawn 方法中创建 RawReceivePort
 
 在生成隔离区之前，你需要创建一个 RawReceivePort，这是一个更低级别的 ReceivePort。使用 RawReceivePort 是一个推荐的模式，因为它允许你将隔离区的启动逻辑与隔离区上处理消息传递的逻辑分开。
 
@@ -6667,6 +6512,7 @@ class Worker {
 然后，定义 RawReceivePort.handler 属性。这个属性是一个 Function?，其行为类似于 ReceivePort.listener。当此端口接收到消息时，将调用该函数。
 在 handler 函数中，调用 connection.complete()。该方法期望一个包含 ReceivePort 和 SendPort 的记录作为参数。SendPort 是从工作隔离区发送的初始消息，它将在下一步中分配给类级别的 SendPort，名为 _commands。
 然后，使用 ReceivePort.fromRawReceivePort 构造函数创建一个新的 ReceivePort，并将 initPort 传入。
+```dart
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
@@ -6682,37 +6528,21 @@ class Worker {
         commandPort,
       ));
     };
-// ···
   }
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
+}
+```
 首先创建一个 RawReceivePort，然后再创建一个 ReceivePort，之后您可以在 ReceivePort.listen 上添加一个新的回调。相反，如果您直接创建一个 ReceivePort，那么您只能添加一个监听器，因为 ReceivePort 实现的是 Stream，而不是 BroadcastStream。
 
 实际上，这允许您将隔离区的启动逻辑与设置通信完成后处理接收消息的逻辑分开。随着其他方法中逻辑的增长，这个好处将变得更加明显。
 
-第三步：使用 Isolate.spawn 生成工作隔离区
+##### 第三步：使用 Isolate.spawn 生成工作隔离区
 
 这一步继续填充 Worker.spawn 方法。您将添加生成隔离区所需的代码，并从该类返回一个 Worker 实例。在这个例子中，Isolate.spawn 的调用被包裹在一个 try/catch 块中，这确保了如果隔离区启动失败，initPort 将被关闭，并且不会创建 Worker 对象。
 
 首先，尝试在 try/catch 块中生成一个工作隔离区。如果生成工作隔离区失败，则关闭在上一步中创建的接收端口。传递给 Isolate.spawn 的方法将在后面的步骤中介绍。
 接下来，等待 connection.future，并从它返回的记录中解构出发送端口和接收端口。
 最后，通过调用 Worker 的私有构造函数并传入来自 completer 的端口来返回 Worker 实例。
+```dart
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
@@ -6741,43 +6571,16 @@ class Worker {
 
     return Worker._(sendPort, receivePort);
   }
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
+}
+```
 请注意，在这个例子中（与之前的例子相比），Worker.spawn 作为这个类的异步静态构造函数，是创建 Worker 实例的唯一方式。这简化了 API，使创建 Worker 实例的代码更加整洁。
 
-第四步：完成隔离区设置过程
+##### 第四步：完成隔离区设置过程
 
 在这一步中，您将完成基本的隔离区设置过程。这几乎完全与之前的例子相对应，并没有新的概念。只是代码被拆分成更多的方法，这是一种设计实践，为后续在这个例子中添加更多功能做好了准备。要深入了解设置隔离区的基本过程，请参阅基本端口示例。
 
 首先，创建从 Worker.spawn 方法返回的私有构造函数。在构造函数体中，为主隔离区使用的接收端口添加一个监听器，并向该监听器传递一个尚未定义的方法，该方法名为 _handleResponsesFromIsolate。
-
+```dart
 class Worker {
   final SendPort _commands;
   final ReceivePort _responses;
@@ -6785,33 +6588,26 @@ class Worker {
   Worker._(this._responses, this._commands) {
     _responses.listen(_handleResponsesFromIsolate);
   }
-1
-2
-3
-4
-5
-6
-7
+}
+```
 接下来，在 _startRemoteIsolate 方法中添加负责初始化工作隔离区端口的代码。回想一下，这个方法在 Worker.spawn 方法中被传递给 Isolate.spawn，并且它将以主隔离区的 SendPort 作为参数传递。
 
 创建一个新的 ReceivePort。
 将该端口的 SendPort 发送回主隔离区。
 调用一个名为 _handleCommandsToIsolate 的新方法，并将新创建的 ReceivePort 和主隔离区的 SendPort 作为参数传递。
+```dart
 static void _startRemoteIsolate(SendPort sendPort) {
   final receivePort = ReceivePort();
   sendPort.send(receivePort.sendPort);
   _handleCommandsToIsolate(receivePort, sendPort);
 }
-1
-2
-3
-4
-5
+```
 接下来，添加 _handleCommandsToIsolate 方法，该方法负责从主隔离区接收消息，在工作隔离区上解码 JSON，并将解码后的 JSON 作为响应发送回去。
 
 首先，在工作隔离区的 ReceivePort 上声明一个监听器。
 在添加到监听器的回调中，尝试在 try/catch 块中解码从主隔离区传递的 JSON。如果解码成功，则将解码后的 JSON 发送回主隔离区。
 如果出现错误，则发送一个 RemoteError 回去。
+```dart
 static void _handleCommandsToIsolate(
     ReceivePort receivePort, SendPort sendPort) {
   receivePort.listen((message) {
@@ -6823,21 +6619,12 @@ static void _handleCommandsToIsolate(
     }
   });
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
+```
 接下来，添加 _handleResponsesFromIsolate 方法的代码。
 
 首先，检查消息是否为 RemoteError，如果是，则应抛出该错误。
 否则，打印消息。在后续步骤中，您将更新此代码以返回消息而不是打印它们。
+```dart
 void _handleResponsesFromIsolate(dynamic message) {
   if (message is RemoteError) {
     throw message;
@@ -6845,31 +6632,23 @@ void _handleResponsesFromIsolate(dynamic message) {
     print(message);
   }
 }
-1
-2
-3
-4
-5
-6
-7
+```
 最后，添加 parseJson 方法，这是一个公共方法，允许外部代码将 JSON 发送到工作隔离区进行解码。
-
+```dart
 Future<Object?> parseJson(String message) async {
   _commands.send(message);
 }
-1
-2
-3
+```
 下一步，您将更新这个方法。
 
-第五步：同时处理多条消息
+##### 第五步：同时处理多条消息
 
 目前，如果您快速地向工作隔离区发送消息，隔离区将按照完成顺序而不是发送顺序发送解码后的 JSON 响应。您无法确定哪个响应对应于哪条消息。
 
 在这一步中，您将解决这个问题，通过为每个消息分配一个 id，并使用 Completer 对象来确保当外部代码调用 parseJson 时，返回给调用者的响应是正确的响应。
 
 首先，向 Worker 添加两个类级别的属性：
-
+```dart
 Map<int, Completer<Object?>> _activeRequests
 int _idCounter
 class Worker {
@@ -6877,20 +6656,18 @@ class Worker {
   final ReceivePort _responses;
   final Map<int, Completer<Object?>> _activeRequests = {};
   int _idCounter = 0;
-1
-2
-3
-4
-5
+}
+```
 _activeRequests 映射将发送给工作隔离区的消息与 Completer 关联起来。_activeRequests 中使用的键来自 _idCounter，当发送更多消息时，该计数器会增加。
 
 接下来，更新 parseJson 方法，在向工作隔离区发送消息之前创建 completer。
 
-首先，创建一个 Completer。
-然后，增加 _idCounter 的值，以便每个 Completer 都与一个唯一的数字关联。
-在 _activeRequests 映射中添加一个条目，其中键为 _idCounter 的当前数字，completer 为值。
-将消息和 id 一起发送给工作隔离区。由于您只能通过 SendPort 发送一个值，因此将 id 和消息包装在一个记录中。
-最后，返回 completer 的 future，该 future 最终将包含来自工作隔离区的响应。
+*首先，创建一个 Completer。
+*然后，增加 _idCounter 的值，以便每个 Completer 都与一个唯一的数字关联。
+*在 _activeRequests 映射中添加一个条目，其中键为 _idCounter 的当前数字，completer 为值。
+  将消息和 id 一起发送给工作隔离区。由于您只能通过 SendPort 发送一个值，因此将 id 和消息包装在一个记录中。
+*最后，返回 completer 的 future，该 future 最终将包含来自工作隔离区的响应。
+```dart
 Future<Object?> parseJson(String message) async {
   final completer = Completer<Object?>.sync();
   final id = _idCounter++;
@@ -6898,19 +6675,13 @@ Future<Object?> parseJson(String message) async {
   _commands.send((id, message));
   return await completer.future;
 }
-1
-2
-3
-4
-5
-6
-7
+```
 您还需要更新 _handleResponsesFromIsolate 和 _handleCommandsToIsolate 以处理这个系统。
 
 在 _handleCommandsToIsolate 中，您需要考虑到消息是一个包含两个值的记录，而不仅仅是 json 文本。通过从消息中解构这些值来实现这一点。
 
 然后，在解码 json 之后，更新对 sendPort.send 的调用，以使用记录将 id 和解码后的 json 一起发送回主隔离区。
-
+```dart
 static void _handleCommandsToIsolate(
     ReceivePort receivePort, SendPort sendPort) {
   receivePort.listen((message) {
@@ -6923,23 +6694,13 @@ static void _handleCommandsToIsolate(
     }
   });
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
+```
 最后，更新 _handleResponsesFromIsolate。
 
-首先，再次从消息参数中解构出 id 和响应。
-然后，从 _activeRequests 映射中删除与此请求对应的 completer。
-最后，不要抛出错误或打印解码后的 json，而是完成 completer，并传入响应。当这个 completer 完成时，响应将被返回给在主隔离区上调用 parseJson 的代码。
+*首先，再次从消息参数中解构出 id 和响应。
+*然后，从 _activeRequests 映射中删除与此请求对应的 completer。
+*最后，不要抛出错误或打印解码后的 json，而是完成 completer，并传入响应。当这个 completer 完成时，响应将被返回给在主隔离区上调用 parseJson 的代码。
+```dart
 void _handleResponsesFromIsolate(dynamic message) {
   final (int id, Object? response) = message as (int, Object?); // New
   final completer = _activeRequests.remove(id)!; // New
@@ -6950,25 +6711,17 @@ void _handleResponsesFromIsolate(dynamic message) {
     completer.complete(response); // Updated
   }
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-第六步：添加关闭端口的功能
+```
+##### 第六步：添加关闭端口的功能
 
 当您的代码不再使用隔离区时，您应该关闭主隔离区和工作隔离区上的端口。
 
-首先，添加一个类级别的布尔值来跟踪端口是否已关闭。
-然后，添加 Worker.close 方法。在该方法中：
-将 _closed 更新为 true。
-向工作隔离区发送一条最终消息。这条消息是一个字符串，内容为“shutdown”，但您可以根据需要选择任何对象。您将在下一个代码段中使用它。
-最后，检查 _activeRequests 是否为空。如果为空，则关闭主隔离区上名为 _responses 的 ReceivePort。
+* 首先，添加一个类级别的布尔值来跟踪端口是否已关闭。
+* 然后，添加 Worker.close 方法。在该方法中：
+* 将 _closed 更新为 true。
+* 向工作隔离区发送一条最终消息。这条消息是一个字符串，内容为“shutdown”，但您可以根据需要选择任何对象。您将在下一个代码段中使用它。
+*最后，检查 _activeRequests 是否为空。如果为空，则关闭主隔离区上名为 _responses 的 ReceivePort。
+```dart
 class Worker {
   bool _closed = false;
 // ···
@@ -6980,19 +6733,10 @@ class Worker {
       print('--- port closed --- ');
     }
   }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
+}
+```
 接下来，您需要在工作隔离区中处理“shutdown”消息。在 _handleCommandsToIsolate 方法中添加以下代码。此代码将检查消息是否是一个内容为“shutdown”的字符串。如果是，它将关闭工作隔离区的 ReceivePort，并返回。
-
+```dart
 static void _handleCommandsToIsolate(
   ReceivePort receivePort,
   SendPort sendPort,
@@ -7012,28 +6756,9 @@ static void _handleCommandsToIsolate(
     }
   });
 }
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
+```
 最后，您应该添加代码来检查在尝试发送消息之前端口是否已关闭。在 Worker.parseJson 方法中添加一行代码。
-
+```dart
 Future<Object?> parseJson(String message) async {
   if (_closed) throw StateError('Closed'); // New
   final completer = Completer<Object?>.sync();
@@ -7042,16 +6767,9 @@ Future<Object?> parseJson(String message) async {
   _commands.send((id, message));
   return await completer.future;
 }
-1
-2
-3
-4
-5
-6
-7
-8
+```
 完整代码
-
+```dart
 import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
@@ -7159,154 +6877,47 @@ class Worker {
     }
   }
 }
+```
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-Null safety
+#### Null safety
 https://dart.cn/null-safety
 
-健全的空安全
-迁移到空安全
-深入理解空安全
-非健全的空安全
-空安全常见问题和解答
-Dffective Dart 高效指南
+* 健全的空安全
+* 迁移到空安全
+* 深入理解空安全
+* 非健全的空安全
+* 空安全常见问题和解答
+#### Dffective Dart 高效指南
 https://dart.cn/effective-dart
 
-概述
-代码风格
-文档
-用法示例 API 设计
-核心库
-概览
+* 概述
+* 代码风格
+* 文档
+* 用法示例 API 设计
+* 核心库
+#### 概览
 Dart 拥有丰富的核心库集合，为许多日常编程任务提供了基本要素，例如处理对象集合（dart:collection）、进行计算（dart:math）以及编码/解码数据（dart:convert）。常用包中还提供了额外的 API。
 
-库概览 Library tour
+#### 库概览 Library tour
 以下指南介绍了如何使用 Dart 核心库的主要功能。它们仅提供了概述，绝非详尽无遗。每当您需要有关库或其成员的更多详细信息时，请查阅 Dart API 参考。
 
-dart:core
+> dart:core
 内置类型、集合和其他核心功能。此库会自动导入到每个 Dart 程序中。
 
-dart:async
+> dart:async
 支持异步编程，包含如 Future 和 Stream 等类。
 
-dart:math
+> dart:math
 数学常量和函数，以及随机数生成器。
 
-dart:convert
+> dart:convert
 用于在不同数据表示形式之间进行转换的编码器和解码器，包括 JSON 和 UTF-8。
 
-dart:io
+> dart:io
 适用于可以使用 Dart VM 的程序（包括 Flutter 应用、服务器和命令行脚本）的 I/O。
 
-dart:html
+> dart:html
 基于浏览器的应用的 DOM 和其他 API。
-
 如前所述，这些页面只是概述；它们仅涵盖少数几个 dart:* 库，并不涉及第三方库。
 
 要了解 Dart 在不同平台上支持的所有库的概述，请查看以下多平台库、原生平台库和 Web 平台库列表。
@@ -7315,70 +6926,67 @@ dart:html
 
 要了解有关 Dart 语言的更多信息，请查阅语言文档和示例。
 
-跨平台库 Multi-platform libraries
+#### 跨平台库 Multi-platform libraries
 以下表格列出了适用于所有 Dart 平台的 Dart 核心库。
 
-Library	Notes
-dart:core
+##### Library	Notes
+> dart:core
 每个 Dart 程序的内置类型、集合和其他核心功能。
-dart:async, package:async
+> dart:async, package:async
 支持异步编程，包括 和 Stream等类Future。
 package:async在 和 Stream 类型周围Future提供其他实用程序。
-dart:collection, package:collection
+> dart:collection, package:collection
 补充了dart:core中集合支持的类和实用程序。
 package:collection提供了更多集合实现以及用于操作集合的函数。
-dart:convert, package:convert
+> dart:convert, package:convert
 编码器和解码器，用于在不同的数据表示形式（包括 JSON 和 UTF-8）之间进行转换。
 package:convert 提供额外的编码器和解码器。
-dart:developer
+> dart:developer
 与开发人员工具（如调试器和检查器）进行交互。	仅限本机 JIT 和开发 JavaScript 编译器
-dart:math
+> dart:math
 数学常数和函数，以及随机数生成器。
-dart:typed_data, package:typed_data
+> dart:typed_data, package:typed_data
 有效处理固定大小的数据（例如，无符号 8 字节整数）和 SIMD 数值类型的列表。
 package:typed_data 提供处理类型化数据的更多类和函数。
-原生平台库 Native platform libraries
+##### 原生平台库 Native platform libraries
 下表列出了适用于 Dart 原生平台 （AOT 和 JIT 编译的代码）。
 
-Library	Notes
-dart:ffi, package:ffi
+##### Library	Notes
+> dart:ffi, package:ffi
 允许 Dart 代码使用本机 C API 的外部函数接口。
 package:ffi 包含实用程序，包括支持转换 Dart 字符串和 C 字符串。
-dart:io, package:io
+> dart:io, package:io
 对非 Web 应用程序的文件、套接字、HTTP 和其他 I/O 支持。
 package:io 提供的功能包括对 ANSI 颜色、文件复制和标准退出代码的支持。
-dart:isolate
+> dart:isolate
 使用隔离的并发编程：类似于线程的独立工作线程。
-dart:mirrors
+> dart:mirrors
 支持内省和动态调用的基本反射。	实验的仅限原生 JIT（不是 Flutter）
-Web 平台库 Web platform libraries
+#### Web 平台库 Web platform libraries
 下表列出了适用于 Dart Web 平台 （代码编译为 JavaScript）。
 
-Library	Notes
-dart:html
+##### Library	Notes
+> dart:html
 用于基于 Web 的应用程序的 HTML 元素和其他资源。
-dart:indexed_db
+> dart:indexed_db
 支持索引的客户端键值存储。
-dart:js， dart:js_util， package:js
+> dart:js， dart:js_util， package:js
 dart:js_util 为互操作性提供低级基元;通常，建议使用更高 package:js 级别的注释，因为它们有助于更简洁地表达互操作性。
 有关详细信息，请参阅 JavaScript 互操作性。
 不要直接使用 dart:js ;不推荐直接使用这些旧版 API。
-dart:svg
+> dart:svg
 可缩放的矢量图形。
-dart:web_audio
+> dart:web_audio
 浏览器中的高保真音频编程。
-dart:web_gl
+> dart:web_gl
 浏览器中的 3D 编程。
-Packages
+##### Packages
 https://dart.cn/guides/packages
 
-如何使用 package
-常用 package 介绍
-创建 package
-发布 package
-设置 package 介绍页
-Package 参考资料
-参考
-1、《Flutter实战·第二版》
-2、Dart 官网 中文
-3、Dart 官网 英文
+#### 如何使用 package
+##### 常用 package 介绍
+*创建 package
+* 发布 package
+* 设置 package 介绍页
+#### Package 参考资料
+
