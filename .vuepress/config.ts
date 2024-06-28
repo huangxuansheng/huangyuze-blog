@@ -1,3 +1,5 @@
+import { link } from "fs";
+import { text } from "stream/consumers";
 import { defineUserConfig } from "vuepress";
 import type { DefaultThemeOptions } from "vuepress";
 import recoTheme from "vuepress-theme-reco";
@@ -329,7 +331,90 @@ export default defineUserConfig({
       { 
         text: "前端优质项目", 
         icon: 'DocumentProtected',
-        link: "/"
+        children: [
+          { 
+            text: 'JeeSite Vue 前后分离版本', 
+            children: [
+              { text: "jeesite文档说明" , link: "https://jeesite.com/docs/jeesite-vue/"},
+              { text: "jeesite-uniapp" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-uniapp"},
+              { text: "jeesite-vue3" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-vue"},
+              { text: "jeesite-client桌面端" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-client"},
+              { text: "jeesite后端" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite5"},
+              { text: "jeesite微服务后端" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-cloud"},
+            ]
+          },
+          { 
+            text: 'D2Admin企业中后台项目', 
+            children: [
+              { text: "D2Admin文档说明" , link: "https://d2.pub/doc/d2-admin/"},
+              { text: "d2-admin完整版" , link: "https://gitee.com/front-end-practical-project/d2-admin-project/tree/master/d2-admin"},
+              { text: "d2-admin简化版" , link: "https://gitee.com/front-end-practical-project/d2-admin-project/tree/master/d2-admin-start-kit"},
+            ]
+          },
+          { 
+            text: 'VbenAdmin企业中后台项目', 
+            children: [
+              { text: "VbenAdmin文档说明" , link: "https://doc.vvbin.cn/"},
+              { text: "vue3-Vben-admin", link: "https://gitee.com/huang_yuze/vue3-Vben-admin"},
+            ]
+          },
+          { 
+            text: "vue2项目", 
+            children:[
+              { text: "模仿网易云音乐", icon: "Music", link: "https://gitee.com/front-end-practical-project/front-end-project/tree/master/2.%20%E6%A8%A1%E6%8B%9F%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%EF%BC%88Vue%EF%BC%89--neteaseApi/vue-netease-music-master"},
+              { text: "模仿掘金", icon: "PassengerPlus", link: "https://gitee.com/front-end-practical-project/front-end-project/tree/master/5.%20%E6%A8%A1%E6%8B%9F%E6%8E%98%E9%87%91%EF%BC%88Vue%EF%BC%89/nuxt-ssr-demo-dev"},
+              { text: "模仿饿了么", icon: "LetterEe", link: "https://gitee.com/front-end-practical-project/front-end-project/tree/master/6.%20%E6%A8%A1%E6%8B%9F%E9%A5%BF%E4%BA%86%E4%B9%88%EF%BC%88Vue%EF%BC%89/vue2-elm-master"},
+              { text: "模仿微信", icon: "LogoWechat", link: "https://gitee.com/front-end-practical-project/front-end-project/tree/master/7.%20%E6%A8%A1%E6%8B%9F%E5%BE%AE%E4%BF%A1%EF%BC%88Vue%20%EF%BC%89/vue-WeChat-master"},
+              { text: "网易云Node后端", icon: "Notebook", link: "https://gitee.com/front-end-practical-project/front-end-project/tree/master/NeteaseCloudMusicApi-master"},
+              { text: "CRMEB商城系统", icon: "ShoppingBag", link: "https://gitee.com/front-end-practical-project/vue2-and-vue3-projects/tree/master/vue2%E9%A1%B9%E7%9B%AE/crmeb_java"},
+            ], 
+          },
+          { 
+            text: "vue3项目", 
+            children:[
+              { text: "模仿QQ音乐", icon: "Music", link: "https://gitee.com/front-end-practical-project/front-end-project/tree/master/1.%E6%A8%A1%E6%8B%9F%20QQ%E9%9F%B3%E4%B9%90%EF%BC%88Vue%EF%BC%89--neteaseApi/vue3-music-master"},
+              
+            ], 
+          },
+          { 
+            text: "react项目", 
+            children:[
+              { text: "模仿网易云音乐", icon: "Music", link: "https://gitee.com/front-end-practical-project/front-end-project/tree/master/3.%20%E6%A8%A1%E6%8B%9F%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%EF%BC%88React%EF%BC%89--neteaseApi/react-netease-music-master"},
+              { text: "模仿B站", icon: "Blockchain", link: "https://gitee.com/front-end-practical-project/front-end-project/tree/master/4.%E6%A8%A1%E6%8B%9FB%E7%AB%99%EF%BC%88React%EF%BC%89/react-bilibili-master"},
+            ], 
+          },
+        ]
+      },
+      { 
+        text: "后端优质项目", 
+        icon: 'Document',
+        children: [
+          { 
+            text: 'mall项目', 
+            children: [
+              { text: "mall文档说明" , link: "https://www.macrozheng.com/"},
+              { text: "mall学习教程" , link: "https://github.com/macrozheng/mall-learning"},
+              { text: "mall基本项目骨架" , link: "https://github.com/macrozheng/mall-tiny"},
+              { text: "mall商城后台管理" , link: "https://github.com/macrozheng/mall-admin-web"},
+              { text: "mall商城app" , link: "https://github.com/macrozheng/mall-app-web"},
+              { text: "mall商城后端" , link: "https://github.com/macrozheng/mall"},
+              { text: "mall商城微服务后端" , link: "https://github.com/macrozheng/mall-swarm"},
+            ]
+          },
+          { 
+            text: '意向商城项目', 
+            children: [
+              { text: "供货商城系统" , icon: "Product", link: "https://gitee.com/front-end-practical-project/imagery-project/tree/master/%E4%BE%9B%E8%B4%A7%E5%95%86%E5%9F%8E%E7%B3%BB%E7%BB%9F"},
+              { text: "扫码点餐系统" ,icon: "Purchase", link: "https://gitee.com/front-end-practical-project/imagery-project/tree/master/%E6%89%AB%E7%A0%81%E7%82%B9%E9%A4%90%E7%B3%BB%E7%BB%9F"},
+            ]
+          },
+          { 
+            text: '社交交友项目', 
+            children: [
+              { text: "社交交友" , icon: "Person", link: "https://gitee.com/front-end-practical-project/social-projects"},
+            ]
+          },
+        ],
       },
       { 
         text: "若依框架", 
@@ -381,11 +466,13 @@ export default defineUserConfig({
           
         ]
       },
-      { text: "移动端", icon: 'ApplicationWeb',
+      { 
+        text: "移动端", 
+        icon: 'ApplicationMobile',
         children: [
-          { text: "dart", link: "/docs/flutter/dart/", ariaLabel: "移动端" },
-          { text: "flutter", link: "/docs/flutter/flutter/", ariaLabel: "移动端" },
-          { text: "kotlin", link: "/docs/android/kotlin/", ariaLabel: "移动端" },
+          { text: "dart", icon: 'DatabaseDatastax', link: "/docs/flutter/dart/", ariaLabel: "移动端" },
+          { text: "flutter", icon: 'FunctionMath', link: "/docs/flutter/flutter/", ariaLabel: "移动端" },
+          { text: "kotlin", icon: 'LetterKk', link: "/docs/android/kotlin/", ariaLabel: "移动端" },
         ]
       },
       { 
@@ -393,6 +480,31 @@ export default defineUserConfig({
         icon: 'ApplicationWeb',
         children: [
           // { text: "Html", link: "/docs/html/", ariaLabel: "前端" },
+        ],
+      },
+      { 
+        text: "UI组件库", 
+        icon: 'Layers',
+        children: [
+          { text: "ElementUI", icon: 'AiResults',link: "https://element.eleme.cn/#/zh-CN/component/installation", ariaLabel: "UI组件库" },
+          { text: "Element-Plus", icon: 'Review',link: "https://element-plus.org/zh-CN/guide/design.html", ariaLabel: "UI组件库" },
+          { text: "Electron", icon: 'RouterVoice',link: "https://www.electronjs.org/zh/", ariaLabel: "UI组件库" },
+          { text: "AntDesign-Vue", icon: 'SaveImage',link: "https://www.antdv.com/components/overview-cn/", ariaLabel: "UI组件库" },
+          { text: "AntDesign-React", icon: 'SkillLevelIntermediate',link: "https://ant.design/docs/react/introduce-cn", ariaLabel: "UI组件库" },
+          { text: "Vuetify", icon: 'SysProvision',link: "https://vuetifyjs.com/zh-Hans/getting-started/installation/", ariaLabel: "UI组件库" },
+          { text: "ChakraUi", icon: 'UvIndexAlt',link: "hhttps://v2.chakra-ui.com/getting-started", ariaLabel: "UI组件库" },
+          { text: "Vant4", icon: 'Branch',link: "https://vant-ui.github.io/vant/#/zh-CN", ariaLabel: "UI组件库" },
+          { text: "Bootstrap", icon: 'AudioConsole',link: "https://www.bootcss.com/", ariaLabel: "UI组件库" },
+        ],
+      },
+      { 
+        text: "AI工具", 
+        icon: 'AiResults',
+        children: [
+          { text: "文心一言",icon: 'Language', link: "https://yiyan.baidu.com/", ariaLabel: "AI工具" },
+          { text: "通义千问",icon: 'Query', link: "https://tongyi.aliyun.com/qianwen/", ariaLabel: "AI工具" },
+          { text: "Poe",icon: 'LicenseGlobal', link: "https://poe.com/", ariaLabel: "AI工具" },
+          { text: "ChatGPT",icon: 'Aperture', link: "hhttps://chatgpt.com/", ariaLabel: "AI工具" },
         ],
       },
       { 
@@ -406,30 +518,30 @@ export default defineUserConfig({
           { text: "yunServer", link: "/docs/server/云服务器/", ariaLabel: "后端" },
         ]
       },
-      // { text: "服务器部署", link: "/",icon: 'ServerDns' },
+      { text: "服务器部署", link: "/",icon: 'ServerDns' },
       { 
         text: "前端面试资料",
         icon: 'Document',
         children: [
-          { text: "Html", link: "/docs/interView/html/", ariaLabel: "前端" },
-          { text: "Css", link: "/docs/interView/css/", ariaLabel: "前端" },
-          { text: "JavaScript", link: "/docs/interView/JavaScript/", ariaLabel: "前端" },
-          { text: "Es6", link: "/docs/interView/es6/", ariaLabel: "前端" },
-          { text: "TypeScript", link: "/docs/interView/typescript/", ariaLabel: "前端" },
-          { text: "vue2",link: "/docs/interView/Vue/", ariaLabel: "前端"  },
-          { text: "vue3",link: "/docs/interView/Vue3/", ariaLabel: "前端"  },
-          { text: "React", link: "/docs/interView/React/", ariaLabel: "前端" },
-          { text: "Webpack", link: "/docs/interView/Webpack/", ariaLabel: "前端" },
-          { text: "Git", link: "/docs/interView/Git/", ariaLabel: "前端" },
-          { text: "Http", link: "/docs/interView/http/", ariaLabel: "前端" },
-          { text: "浏览器", link: "/docs/interView/browser/", ariaLabel: "前端" },
-          { text: "小程序", link: "/docs/interView/applet/", ariaLabel: "前端" },
-          { text: "web安全", link: "/docs/interView/other/web-safe/", ariaLabel: "前端" },
-          { text: "性能优化", link: "/docs/interView/other/performance/", ariaLabel: "前端" },
-          { text: "微前端", link: "/docs/interView/other/micro-web/", ariaLabel: "前端" },
-          { text: "算法", link: "/docs/interView/algorithm/", ariaLabel: "前端" }, 
-          { text: "面试题", link: "/docs/interView/other/questions/", },
-          { text: "计算机网络面试题", link: "/docs/interView/other/questions2/"},
+          { text: "Html", icon: "Html", link: "/docs/interView/html/", ariaLabel: "前端" },
+          { text: "Css", icon: "CicsSystemGroup", link: "/docs/interView/css/", ariaLabel: "前端" },
+          { text: "JavaScript", icon: "Json", link: "/docs/interView/JavaScript/", ariaLabel: "前端" },
+          { text: "Es6", icon:"Milestone", link: "/docs/interView/es6/", ariaLabel: "前端" },
+          { text: "TypeScript", icon:"Types", link: "/docs/interView/typescript/", ariaLabel: "前端" },
+          { text: "vue2", icon:"Cu1", link: "/docs/interView/Vue/", ariaLabel: "前端"  },
+          { text: "vue3", icon:"Cu3", link: "/docs/interView/Vue3/", ariaLabel: "前端"  },
+          { text: "React", icon:"DatabaseRabbit", link: "/docs/interView/React/", ariaLabel: "前端" },
+          { text: "Webpack", icon:"DiagramReference", link: "/docs/interView/Webpack/", ariaLabel: "前端" },
+          { text: "Git", icon:"Education", link: "/docs/interView/Git/", ariaLabel: "前端" },
+          { text: "Http", icon:"DocumentWordProcessor", link: "/docs/interView/http/", ariaLabel: "前端" },
+          { text: "浏览器", icon:"DashboardReference", link: "/docs/interView/browser/", ariaLabel: "前端" },
+          { text: "小程序", icon:"ContainerSoftware", link: "/docs/interView/applet/", ariaLabel: "前端" },
+          { text: "web安全", icon:"ConnectionSignalOff", link: "/docs/interView/other/web-safe/", ariaLabel: "前端" },
+          { text: "性能优化", icon:"CobbAngle", link: "/docs/interView/other/performance/", ariaLabel: "前端" },
+          { text: "微前端", icon:"CloudSatelliteConfig", link: "/docs/interView/other/micro-web/", ariaLabel: "前端" },
+          { text: "算法", icon:"CloudApp", link: "/docs/interView/algorithm/", ariaLabel: "前端" }, 
+          { text: "面试题", icon:"CloudCeiling", link: "/docs/interView/other/questions/", },
+          { text: "计算机网络面试题", icon:"CheckboxChecke", link: "/docs/interView/other/questions2/"},
         ] 
       },
       {
