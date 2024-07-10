@@ -467,6 +467,31 @@ export default defineUserConfig({
         ]
       },
       { 
+        text: "React学习项目", 
+        icon: 'CdCreateArchive',
+        children: [
+          { 
+            text: "React后台管理系统",
+            children:[
+              { text: "go-react-admin", icon: 'CategoryAdd', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/go-react-admin", ariaLabel: "React后台管理系统" },
+              { text: "go-react-blog", icon: 'Blog', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/golang-blog", ariaLabel: "React后台管理系统" },
+              { text: "react-ant-admin", icon: 'QuadrantPlot', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/react-ant-admin", ariaLabel: "React后台管理系统" },
+              { text: "ruoyi-react", icon: 'BrushPolygon', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/ruoyi-react", ariaLabel: "React后台管理系统" },
+              { text: "react-template", icon: 'Template', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/react-template", ariaLabel: "React后台管理系统" },
+            ]
+          },
+          { 
+            text: "React移动端",
+            children:[
+              { text: "react-find-houses", icon: 'Hotel', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/react-find-houses", ariaLabel: "React移动端" },
+              { text: "react-bookkeeping", icon: 'NotebookReference', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/bookkeeping-react", ariaLabel: "React移动端" },
+              { text: "react-blog", icon: 'BookmarkAdd', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/anzhuo", ariaLabel: "React移动端" },
+              { text: "react-antd-h5", icon: 'H', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/react-antd-h5", ariaLabel: "React移动端" },
+            ]
+          },
+        ]
+      },
+      { 
         text: "移动端", 
         icon: 'ApplicationMobile',
         children: [
