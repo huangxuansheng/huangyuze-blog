@@ -337,7 +337,8 @@ export default defineUserConfig({
             children: [
               { text: "jeesite文档说明" , link: "https://jeesite.com/docs/jeesite-vue/"},
               { text: "jeesite-uniapp" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-uniapp"},
-              { text: "jeesite-vue3" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-vue"},
+              { text: "jeesite-vue3-admin" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-vue"},
+              { text: "jeesite-react-admin" , link: "https://gitee.com/social-lia/social-react-admin"},
               { text: "jeesite-client桌面端" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-client"},
               { text: "jeesite后端" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite5"},
               { text: "jeesite微服务后端" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-cloud"},
