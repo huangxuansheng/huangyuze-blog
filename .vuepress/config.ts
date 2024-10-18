@@ -417,6 +417,18 @@ export default defineUserConfig({
           },
         ],
       },
+      {
+        text: "企业应用系统项目",
+        icon: 'DocumentProtected',
+        children: [
+          { 
+            text: '工匠云-OA系统', 
+            children: [
+              { text: "项目地址" , link: "https://gitee.com/lufeng-snack-specialty---web/craftsman-cloud-oa-system"},
+            ]
+          },
+        ]
+      },
       { 
         text: "若依框架", 
         icon: 'VolumeObjectStorage',
