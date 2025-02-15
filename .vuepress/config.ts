@@ -337,7 +337,8 @@ export default defineUserConfig({
             children: [
               { text: "jeesite文档说明" , link: "https://jeesite.com/docs/jeesite-vue/"},
               { text: "jeesite-uniapp" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-uniapp"},
-              { text: "jeesite-vue3" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-vue"},
+              { text: "jeesite-vue3-admin" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-vue"},
+              { text: "jeesite-react-admin" , link: "https://gitee.com/social-lia/social-react-admin"},
               { text: "jeesite-client桌面端" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-client"},
               { text: "jeesite后端" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite5"},
               { text: "jeesite微服务后端" , link: "https://gitee.com/front-end-practical-project/jeesite-project/tree/master/jeesite-cloud"},
@@ -416,6 +417,18 @@ export default defineUserConfig({
           },
         ],
       },
+      {
+        text: "企业应用系统项目",
+        icon: 'DocumentProtected',
+        children: [
+          { 
+            text: '工匠云-OA系统', 
+            children: [
+              { text: "项目地址" , link: "https://gitee.com/lufeng-snack-specialty---web/craftsman-cloud-oa-system"},
+            ]
+          },
+        ]
+      },
       { 
         text: "若依框架", 
         icon: 'VolumeObjectStorage',
@@ -464,6 +477,31 @@ export default defineUserConfig({
             ],
           },
           
+        ]
+      },
+      { 
+        text: "React学习项目", 
+        icon: 'CdCreateArchive',
+        children: [
+          { 
+            text: "React后台管理系统",
+            children:[
+              { text: "go-react-admin", icon: 'CategoryAdd', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/go-react-admin", ariaLabel: "React后台管理系统" },
+              { text: "go-react-blog", icon: 'Blog', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/golang-blog", ariaLabel: "React后台管理系统" },
+              { text: "react-ant-admin", icon: 'QuadrantPlot', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/react-ant-admin", ariaLabel: "React后台管理系统" },
+              { text: "ruoyi-react", icon: 'BrushPolygon', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/ruoyi-react", ariaLabel: "React后台管理系统" },
+              { text: "react-template", icon: 'Template', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/react-template", ariaLabel: "React后台管理系统" },
+            ]
+          },
+          { 
+            text: "React移动端",
+            children:[
+              { text: "react-find-houses", icon: 'Hotel', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/react-find-houses", ariaLabel: "React移动端" },
+              { text: "react-bookkeeping", icon: 'NotebookReference', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/bookkeeping-react", ariaLabel: "React移动端" },
+              { text: "react-blog", icon: 'BookmarkAdd', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/anzhuo", ariaLabel: "React移动端" },
+              { text: "react-antd-h5", icon: 'H', link: "https://gitee.com/front-end-practical-project/react-project/tree/master/react-antd-h5", ariaLabel: "React移动端" },
+            ]
+          },
         ]
       },
       { 
