@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-70194944","path":"/docs/interView/http/","title":"","lang":"en-US","frontmatter":{},"headers":[],"git":{"createdTime":1719418008000,"updatedTime":1719418008000,"contributors":[{"name":"huang_yuze","email":"1020366562@qq.com","commits":1}]},"filePathRelative":"docs/interView/http/README.md"}');export{e as data};

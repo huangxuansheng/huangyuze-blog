@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-827cbf60","path":"/docs/interView/other/message/","title":"留言板","lang":"en-US","frontmatter":{},"headers":[],"git":{"createdTime":1719418008000,"updatedTime":1719418008000,"contributors":[{"name":"huang_yuze","email":"1020366562@qq.com","commits":1}]},"filePathRelative":"docs/interView/other/message/readme.md"}');export{e as data};

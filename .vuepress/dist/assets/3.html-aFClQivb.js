@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-8010e714","path":"/docs/interView/browser/3.html","title":"浏览器的主要组成部分是什么？","lang":"en-US","frontmatter":{},"headers":[],"git":{"createdTime":1719418008000,"updatedTime":1719418008000,"contributors":[{"name":"huang_yuze","email":"1020366562@qq.com","commits":1}]},"filePathRelative":"docs/interView/browser/3.md"}');export{e as data};
