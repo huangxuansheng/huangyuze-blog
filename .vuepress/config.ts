@@ -16,14 +16,6 @@ export default defineUserConfig({
           "width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1",
       },
     ],
-    ['script', { type: 'text/javascript' }, `
-      document.addEventListener('DOMContentLoaded', function() {
-        const footer = document.querySelector('footer');
-        if (footer) {
-          footer.innerHTML += '<p style="text-align: center; font-size: 12px; color: #777;">备案号：<a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2022027470号</a></p>';
-        }
-      });
-    `],
   ],
   title: "前端时光",
   description: "前端小泽的blog",

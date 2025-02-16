@@ -13,9 +13,16 @@ bannerBrand:
   buttons:
     - { text: 关于我, link: '/docs/aboutMe' }
 isShowTitleInHome: true
----
+footer:
+  record: 粤ICP备2022027470号
+  recordLink: https://beian.miit.gov.cn
+  # cyberSecurityRecord: 公安备案文案
+  # cyberSecurityLink: 公安备案地址
+  startYear: 2024
 
+---
 <!-- MdContent -->
+
 ## 快速开始
 
 **npx**
